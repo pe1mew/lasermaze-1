@@ -1,1 +1,64 @@
-[]
+[
+    {
+        "id": "49fbf15f.3b175",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "250ff9a.803fb06",
+        "type": "mqtt-broker",
+        "name": "localhost",
+        "broker": "raspberrypi",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "2c66326f.5ecb96",
+        "type": "mqtt in",
+        "z": "49fbf15f.3b175",
+        "name": "localhost",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "250ff9a.803fb06",
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "57133cbc.045b44"
+            ]
+        ]
+    },
+    {
+        "id": "57133cbc.045b44",
+        "type": "debug",
+        "z": "49fbf15f.3b175",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 180,
+        "wires": []
+    }
+]
