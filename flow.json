@@ -10,22 +10,152 @@
         "id": "250ff9a.803fb06",
         "type": "mqtt-broker",
         "name": "localhost",
-        "broker": "raspberrypi",
+        "broker": "localhost",
         "port": "1883",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "compatmode": false,
+        "protocolVersion": "4",
         "keepalive": "60",
         "cleansession": true,
         "birthTopic": "",
         "birthQos": "0",
         "birthPayload": "",
+        "birthMsg": {},
         "closeTopic": "",
         "closeQos": "0",
         "closePayload": "",
+        "closeMsg": {},
         "willTopic": "",
         "willQos": "0",
-        "willPayload": ""
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "da452479d1ea07ce",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.20.232",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "3620555d11c280fd",
+        "type": "mqtt in",
+        "z": "49fbf15f.3b175",
+        "name": "localhost",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "250ff9a.803fb06",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "5756912b5eacfde7"
+            ]
+        ]
+    },
+    {
+        "id": "5756912b5eacfde7",
+        "type": "debug",
+        "z": "49fbf15f.3b175",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "50db8605e0a491d4",
+        "type": "mqtt out",
+        "z": "49fbf15f.3b175",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "250ff9a.803fb06",
+        "x": 590,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "8b9edccbad359021",
+        "type": "function",
+        "z": "49fbf15f.3b175",
+        "name": "",
+        "func": "// MQTT settings\n\nmsg.topic = \"painlessMesh/to/gateway\";\n// msg.topic = \"painlessMesh/to/2229123389\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// // prepare RAW payload and convert to base64\n// var payload_raw = Buffer.alloc(2, 0);\n// payload_raw[1] = 0x03;\n// var base64data = payload_raw.toString('base64');\n\n// // use payload fields\n// var message = \"getNodes\"; \n// // var message = \"Hello back\"; \n\n// msg.payload = message;\n\nmsg.payload = msg.message;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "50db8605e0a491d4"
+            ]
+        ]
+    },
+    {
+        "id": "a9a63b076ea9af1f",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "message",
+                "v": "getNodes",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 210,
+        "y": 260,
+        "wires": [
+            [
+                "8b9edccbad359021"
+            ]
+        ]
     },
     {
         "id": "2c66326f.5ecb96",
@@ -36,6 +166,7 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "250ff9a.803fb06",
+        "inputs": 0,
         "x": 310,
         "y": 180,
         "wires": [
@@ -60,5 +191,23 @@
         "x": 500,
         "y": 180,
         "wires": []
+    },
+    {
+        "id": "1b54ca5f0860e0db",
+        "type": "mqtt in",
+        "z": "49fbf15f.3b175",
+        "name": "localhost",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "da452479d1ea07ce",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 160,
+        "y": 60,
+        "wires": [
+            []
+        ]
     }
 ]
