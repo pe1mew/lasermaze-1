@@ -60,19 +60,135 @@
         "sessionExpiry": ""
     },
     {
+        "id": "66f243fe336ed255",
+        "type": "ui_tab",
+        "name": "TB",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "621f4384a7c5e6c1",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "4f1dda1ab9d88666",
+        "type": "ui_group",
+        "name": "TB",
+        "tab": "66f243fe336ed255",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "3620555d11c280fd",
         "type": "mqtt in",
         "z": "49fbf15f.3b175",
         "name": "localhost",
-        "topic": "#",
+        "topic": "lasermaze/#",
         "qos": "2",
         "datatype": "auto",
         "broker": "250ff9a.803fb06",
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 160,
-        "y": 120,
+        "x": 140,
+        "y": 60,
         "wires": [
             [
                 "5756912b5eacfde7"
@@ -84,7 +200,7 @@
         "type": "debug",
         "z": "49fbf15f.3b175",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -92,43 +208,320 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 310,
-        "y": 120,
+        "x": 290,
+        "y": 60,
         "wires": []
     },
     {
-        "id": "50db8605e0a491d4",
+        "id": "f7bb29ec94eb1366",
         "type": "mqtt out",
         "z": "49fbf15f.3b175",
         "name": "",
         "topic": "",
         "qos": "",
         "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
         "broker": "250ff9a.803fb06",
-        "x": 590,
-        "y": 260,
+        "x": 770,
+        "y": 220,
         "wires": []
     },
     {
-        "id": "8b9edccbad359021",
-        "type": "function",
+        "id": "4cd34c7c2e50e202",
+        "type": "inject",
         "z": "49fbf15f.3b175",
-        "name": "",
-        "func": "// MQTT settings\n\nmsg.topic = \"painlessMesh/to/gateway\";\n// msg.topic = \"painlessMesh/to/2229123389\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// // prepare RAW payload and convert to base64\n// var payload_raw = Buffer.alloc(2, 0);\n// payload_raw[1] = 0x03;\n// var base64data = payload_raw.toString('base64');\n\n// // use payload fields\n// var message = \"getNodes\"; \n// // var message = \"Hello back\"; \n\n// msg.payload = message;\n\nmsg.payload = msg.message;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 390,
-        "y": 260,
+        "name": "7-1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14769654/output/7/",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 150,
+        "y": 120,
         "wires": [
             [
-                "50db8605e0a491d4"
+                "f7bb29ec94eb1366"
             ]
         ]
     },
     {
-        "id": "a9a63b076ea9af1f",
+        "id": "01130c4d6b4f8711",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "1-0",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14530877/output/0/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 260,
+        "wires": [
+            [
+                "f7bb29ec94eb1366"
+            ]
+        ]
+    },
+    {
+        "id": "eaef0c1449dab2d3",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "9",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14769654/output/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 320,
+        "wires": [
+            [
+                "f7bb29ec94eb1366"
+            ]
+        ]
+    },
+    {
+        "id": "70b68679e78b9604",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "7-0",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14769654/output/7/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "f7bb29ec94eb1366"
+            ]
+        ]
+    },
+    {
+        "id": "daab57f10f11b196",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "1-1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14530877/output/0/",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "f7bb29ec94eb1366"
+            ]
+        ]
+    },
+    {
+        "id": "dcfc7bac681587df",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "input 9",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14733772/input/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 520,
+        "wires": [
+            [
+                "f7bb29ec94eb1366"
+            ]
+        ]
+    },
+    {
+        "id": "963b9de6bec6a6f6",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "14493860_0-0",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14493860/output/0/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 320,
+        "y": 840,
+        "wires": [
+            [
+                "71cb965e314fab27"
+            ]
+        ]
+    },
+    {
+        "id": "b000d6cd9f701233",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "14493860_0-1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14493860/output/0/",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 320,
+        "y": 800,
+        "wires": [
+            [
+                "71cb965e314fab27"
+            ]
+        ]
+    },
+    {
+        "id": "2574dd0ef7bd4ea0",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "14493860_3-0",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14493860/output/3/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 320,
+        "y": 920,
+        "wires": [
+            [
+                "71cb965e314fab27"
+            ]
+        ]
+    },
+    {
+        "id": "72605d0ab107c2ad",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "14493860_3-1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14493860/output/3/",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 320,
+        "y": 880,
+        "wires": [
+            [
+                "71cb965e314fab27"
+            ]
+        ]
+    },
+    {
+        "id": "857e8373dc88b9d8",
         "type": "inject",
         "z": "49fbf15f.3b175",
         "name": "",
@@ -137,46 +530,45 @@
                 "p": "payload"
             },
             {
-                "p": "message",
-                "v": "getNodes",
+                "p": "topic",
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "6",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
         "payloadType": "date",
-        "x": 210,
-        "y": 260,
+        "x": 150,
+        "y": 680,
         "wires": [
             [
-                "8b9edccbad359021"
+                "4dc6bee535ceae71"
             ]
         ]
     },
     {
-        "id": "2c66326f.5ecb96",
-        "type": "mqtt in",
+        "id": "4dc6bee535ceae71",
+        "type": "function",
         "z": "49fbf15f.3b175",
-        "name": "localhost",
-        "topic": "#",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "250ff9a.803fb06",
-        "inputs": 0,
-        "x": 310,
-        "y": 180,
+        "name": "14769654",
+        "func": "const id = 14769654;\nconst maxPort = 4;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 680,
         "wires": [
             [
-                "57133cbc.045b44"
+                "71cb965e314fab27"
             ]
         ]
     },
     {
-        "id": "57133cbc.045b44",
+        "id": "cace73046eeb123d",
         "type": "debug",
         "z": "49fbf15f.3b175",
         "name": "",
@@ -188,26 +580,176 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 500,
-        "y": 180,
+        "x": 730,
+        "y": 460,
         "wires": []
     },
     {
-        "id": "1b54ca5f0860e0db",
+        "id": "ea07382bbdc93b61",
+        "type": "function",
+        "z": "49fbf15f.3b175",
+        "name": "14493860",
+        "func": "const id = 14493860;\nconst maxPort = 4;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 760,
+        "wires": [
+            [
+                "71cb965e314fab27"
+            ]
+        ]
+    },
+    {
+        "id": "71cb965e314fab27",
+        "type": "mqtt out",
+        "z": "49fbf15f.3b175",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "250ff9a.803fb06",
+        "x": 570,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "3ab6d96b213fc108",
+        "type": "inject",
+        "z": "49fbf15f.3b175",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 760,
+        "wires": [
+            [
+                "ea07382bbdc93b61"
+            ]
+        ]
+    },
+    {
+        "id": "814dc161c018d1ee",
         "type": "mqtt in",
         "z": "49fbf15f.3b175",
         "name": "localhost",
-        "topic": "#",
+        "topic": "lasermaze/+/wifi/#",
         "qos": "2",
         "datatype": "auto",
-        "broker": "da452479d1ea07ce",
+        "broker": "250ff9a.803fb06",
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 160,
-        "y": 60,
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "56382f397131e641"
+            ]
+        ]
+    },
+    {
+        "id": "6af5eace6dcfd5c0",
+        "type": "ui_chart",
+        "z": "49fbf15f.3b175",
+        "name": "RSSI",
+        "group": "4f1dda1ab9d88666",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "15",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 850,
+        "y": 100,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "56382f397131e641",
+        "type": "function",
+        "z": "49fbf15f.3b175",
+        "name": "Extract RSSI by ID",
+        "func": "msg.mqttTopic = msg.topic;\nvar topics = msg.topic.split('/');\nmsg.topic = topics[1];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 100,
+        "wires": [
+            [
+                "6af5eace6dcfd5c0"
+            ]
+        ]
+    },
+    {
+        "id": "524220dd2e04d5c1",
+        "type": "mqtt in",
+        "z": "49fbf15f.3b175",
+        "name": "localhost",
+        "topic": "lasermaze/+/input/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "250ff9a.803fb06",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 580,
+        "y": 460,
+        "wires": [
+            [
+                "cace73046eeb123d"
+            ]
         ]
     }
 ]
