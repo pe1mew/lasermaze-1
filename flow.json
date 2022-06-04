@@ -188,7 +188,7 @@
         "tab": "66f243fe336ed255",
         "order": 1,
         "disp": true,
-        "width": "12",
+        "width": 11,
         "collapse": false,
         "className": ""
     },
@@ -765,6 +765,7 @@
         "id": "884cd80db159ba73",
         "type": "mqtt in",
         "z": "3e84c5cf3d615558",
+        "d": true,
         "name": "output",
         "topic": "lasermaze/+/output/#",
         "qos": "2",
@@ -1963,7 +1964,6 @@
         "id": "ed23cb4ea754bf93",
         "type": "inject",
         "z": "3e84c5cf3d615558",
-        "d": true,
         "name": "",
         "props": [
             {
@@ -2048,7 +2048,6 @@
         "id": "dc3be2e79d78acf2",
         "type": "inject",
         "z": "3e84c5cf3d615558",
-        "d": true,
         "name": "",
         "props": [
             {
@@ -2108,7 +2107,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "1",
+        "repeat": "0.5",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
@@ -2182,7 +2181,7 @@
         "rap": false,
         "inputs": 0,
         "x": 120,
-        "y": 240,
+        "y": 400,
         "wires": [
             [
                 "0659549ac6e0af0f",
@@ -2196,7 +2195,7 @@
         "type": "debug",
         "z": "14b665ce20ae005d",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2205,7 +2204,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 290,
-        "y": 200,
+        "y": 360,
         "wires": []
     },
     {
@@ -2220,7 +2219,7 @@
         "finalize": "",
         "libs": [],
         "x": 300,
-        "y": 240,
+        "y": 400,
         "wires": [
             [
                 "6b4f417cc7429e2e"
@@ -2241,12 +2240,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2255,7 +2254,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 120,
+        "y": 280,
         "wires": []
     },
     {
@@ -2272,12 +2271,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2286,7 +2285,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 280,
+        "y": 440,
         "wires": []
     },
     {
@@ -2303,12 +2302,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2317,7 +2316,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 160,
+        "y": 320,
         "wires": []
     },
     {
@@ -2334,12 +2333,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2348,7 +2347,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 200,
+        "y": 360,
         "wires": []
     },
     {
@@ -2365,12 +2364,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2379,7 +2378,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 240,
+        "y": 400,
         "wires": []
     },
     {
@@ -2396,12 +2395,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2410,7 +2409,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 320,
+        "y": 480,
         "wires": []
     },
     {
@@ -2427,12 +2426,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2441,7 +2440,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 360,
+        "y": 520,
         "wires": []
     },
     {
@@ -2492,7 +2491,7 @@
         "repair": false,
         "outputs": 7,
         "x": 450,
-        "y": 240,
+        "y": 400,
         "wires": [
             [
                 "9778381ddff2d206"
@@ -2529,7 +2528,7 @@
         "finalize": "",
         "libs": [],
         "x": 300,
-        "y": 540,
+        "y": 700,
         "wires": [
             [
                 "51d8204139e7af17"
@@ -2550,12 +2549,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2564,7 +2563,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 420,
+        "y": 580,
         "wires": []
     },
     {
@@ -2581,12 +2580,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2595,7 +2594,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 580,
+        "y": 740,
         "wires": []
     },
     {
@@ -2612,12 +2611,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2626,7 +2625,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 460,
+        "y": 620,
         "wires": []
     },
     {
@@ -2643,12 +2642,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2657,7 +2656,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 500,
+        "y": 660,
         "wires": []
     },
     {
@@ -2674,12 +2673,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2688,7 +2687,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 540,
+        "y": 700,
         "wires": []
     },
     {
@@ -2705,12 +2704,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2719,7 +2718,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 620,
+        "y": 780,
         "wires": []
     },
     {
@@ -2736,12 +2735,12 @@
         "colorForValue": [
             {
                 "color": "#008000",
-                "value": "0",
+                "value": "1",
                 "valueType": "str"
             },
             {
                 "color": "#ff0000",
-                "value": "1",
+                "value": "0",
                 "valueType": "str"
             }
         ],
@@ -2750,7 +2749,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 660,
+        "y": 820,
         "wires": []
     },
     {
@@ -2801,7 +2800,7 @@
         "repair": false,
         "outputs": 7,
         "x": 450,
-        "y": 540,
+        "y": 700,
         "wires": [
             [
                 "7e9b456f6a38e41b"
@@ -2839,7 +2838,7 @@
         "rap": false,
         "inputs": 0,
         "x": 120,
-        "y": 60,
+        "y": 220,
         "wires": [
             [
                 "afacc9198954a73f"
@@ -2858,10 +2857,11 @@
         "finalize": "",
         "libs": [],
         "x": 310,
-        "y": 60,
+        "y": 220,
         "wires": [
             [
-                "7dec996ed7f7259a"
+                "7dec996ed7f7259a",
+                "814b5fb2cb647657"
             ]
         ]
     },
@@ -2904,10 +2904,133 @@
         "useDifferentColor": false,
         "className": "",
         "x": 650,
-        "y": 60,
+        "y": 220,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "814b5fb2cb647657",
+        "type": "debug",
+        "z": "14b665ce20ae005d",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1bcde0b2c779ccbd",
+        "type": "inject",
+        "z": "14b665ce20ae005d",
+        "name": "9@2 - 14733772",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "34",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14733772/input/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "fcca2048077acd7a"
+            ]
+        ]
+    },
+    {
+        "id": "334d173d40f9b6f6",
+        "type": "inject",
+        "z": "14b665ce20ae005d",
+        "d": true,
+        "name": "9@14493860",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "31",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14493860/output/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "fcca2048077acd7a"
+            ]
+        ]
+    },
+    {
+        "id": "0701c27d886bfae3",
+        "type": "inject",
+        "z": "14b665ce20ae005d",
+        "name": "9@1 - 14734117",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "33",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.2",
+        "topic": "lasermaze/14734117/input/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 60,
+        "wires": [
+            [
+                "fcca2048077acd7a"
+            ]
+        ]
+    },
+    {
+        "id": "fcca2048077acd7a",
+        "type": "mqtt out",
+        "z": "14b665ce20ae005d",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "250ff9a.803fb06",
+        "x": 390,
+        "y": 100,
+        "wires": []
     },
     {
         "id": "3620555d11c280fd",
@@ -3143,7 +3266,7 @@
         "type": "debug",
         "z": "49fbf15f.3b175",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
