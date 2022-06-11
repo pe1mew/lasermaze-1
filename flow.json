@@ -1,8 +1,16 @@
 [
     {
+        "id": "b85e689907e9fec0",
+        "type": "tab",
+        "label": "TestBench",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "3e84c5cf3d615558",
         "type": "tab",
-        "label": "TB Output",
+        "label": "Outputs",
         "disabled": false,
         "info": "",
         "env": []
@@ -10,7 +18,7 @@
     {
         "id": "14b665ce20ae005d",
         "type": "tab",
-        "label": "TB Input",
+        "label": "Inputs",
         "disabled": false,
         "info": "",
         "env": []
@@ -19,8 +27,16 @@
         "id": "49fbf15f.3b175",
         "type": "tab",
         "label": "Flow 1",
-        "disabled": false,
+        "disabled": true,
         "info": ""
+    },
+    {
+        "id": "1007930ba5f8f5d0",
+        "type": "tab",
+        "label": "Game",
+        "disabled": false,
+        "info": "",
+        "env": []
     },
     {
         "id": "250ff9a.803fb06",
@@ -208,7 +224,7 @@
         "tab": "c5e7312eaa9cdf8b",
         "order": 1,
         "disp": true,
-        "width": "2",
+        "width": 2,
         "collapse": false,
         "className": ""
     },
@@ -219,7 +235,7 @@
         "tab": "c5e7312eaa9cdf8b",
         "order": 2,
         "disp": true,
-        "width": "2",
+        "width": 2,
         "collapse": false,
         "className": ""
     },
@@ -277,6 +293,206 @@
         "className": ""
     },
     {
+        "id": "d4b46c88d0dadebe",
+        "type": "ui_group",
+        "name": "14771609",
+        "tab": "c5e7312eaa9cdf8b",
+        "order": 3,
+        "disp": true,
+        "width": 2,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "dfad14d10a9fab45",
+        "type": "inject",
+        "z": "b85e689907e9fec0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "6",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "2418317a0fde6e8d"
+            ]
+        ]
+    },
+    {
+        "id": "2418317a0fde6e8d",
+        "type": "function",
+        "z": "b85e689907e9fec0",
+        "name": "14769654",
+        "func": "const id = 14769654;\nconst maxPort = 4;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 120,
+        "wires": [
+            [
+                "ac0f859af2c36f08"
+            ]
+        ]
+    },
+    {
+        "id": "bb74cd760b6d518c",
+        "type": "function",
+        "z": "b85e689907e9fec0",
+        "name": "14493860",
+        "func": "const id = 14493860;\nconst maxPort = 4;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 160,
+        "wires": [
+            [
+                "ac0f859af2c36f08"
+            ]
+        ]
+    },
+    {
+        "id": "ac0f859af2c36f08",
+        "type": "mqtt out",
+        "z": "b85e689907e9fec0",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "250ff9a.803fb06",
+        "x": 710,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9dcdfc9bb589e126",
+        "type": "inject",
+        "z": "b85e689907e9fec0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 160,
+        "wires": [
+            [
+                "bb74cd760b6d518c"
+            ]
+        ]
+    },
+    {
+        "id": "c225cf19e47cc15e",
+        "type": "comment",
+        "z": "b85e689907e9fec0",
+        "name": "4-relay - 1",
+        "info": "",
+        "x": 160,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4d82961d3e1cae14",
+        "type": "comment",
+        "z": "b85e689907e9fec0",
+        "name": "4-relay - 2",
+        "info": "",
+        "x": 160,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "e1fbf644e1272946",
+        "type": "inject",
+        "z": "b85e689907e9fec0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "8200541acdb9f1e1"
+            ]
+        ]
+    },
+    {
+        "id": "8200541acdb9f1e1",
+        "type": "function",
+        "z": "b85e689907e9fec0",
+        "name": "14530877",
+        "func": "const id = 14530877;\nconst maxPort = 8;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 80,
+        "wires": [
+            [
+                "ac0f859af2c36f08"
+            ]
+        ]
+    },
+    {
+        "id": "26aa1648828333c3",
+        "type": "comment",
+        "z": "b85e689907e9fec0",
+        "name": "8-output - 3",
+        "info": "",
+        "x": 150,
+        "y": 80,
+        "wires": []
+    },
+    {
         "id": "179ff4162a99f002",
         "type": "mqtt out",
         "z": "3e84c5cf3d615558",
@@ -291,7 +507,7 @@
         "expiry": "",
         "broker": "250ff9a.803fb06",
         "x": 1070,
-        "y": 1120,
+        "y": 980,
         "wires": []
     },
     {
@@ -315,7 +531,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 500,
+        "y": 360,
         "wires": [
             [
                 "64417631ef1db667"
@@ -343,7 +559,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 540,
+        "y": 400,
         "wires": [
             [
                 "64417631ef1db667"
@@ -362,7 +578,7 @@
         "finalize": "",
         "libs": [],
         "x": 880,
-        "y": 760,
+        "y": 620,
         "wires": [
             [
                 "179ff4162a99f002"
@@ -390,7 +606,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 580,
+        "y": 440,
         "wires": [
             [
                 "64417631ef1db667"
@@ -418,7 +634,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 620,
+        "y": 480,
         "wires": [
             [
                 "64417631ef1db667"
@@ -446,7 +662,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 660,
+        "y": 520,
         "wires": [
             [
                 "64417631ef1db667"
@@ -474,7 +690,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 700,
+        "y": 560,
         "wires": [
             [
                 "64417631ef1db667"
@@ -502,7 +718,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 740,
+        "y": 600,
         "wires": [
             [
                 "64417631ef1db667"
@@ -530,7 +746,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 780,
+        "y": 640,
         "wires": [
             [
                 "64417631ef1db667"
@@ -558,7 +774,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 840,
+        "y": 700,
         "wires": [
             [
                 "64417631ef1db667"
@@ -586,7 +802,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 880,
+        "y": 740,
         "wires": [
             [
                 "64417631ef1db667"
@@ -614,7 +830,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 920,
+        "y": 780,
         "wires": [
             [
                 "64417631ef1db667"
@@ -642,7 +858,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 960,
+        "y": 820,
         "wires": [
             [
                 "64417631ef1db667"
@@ -670,7 +886,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1000,
+        "y": 860,
         "wires": [
             [
                 "64417631ef1db667"
@@ -698,7 +914,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1040,
+        "y": 900,
         "wires": [
             [
                 "64417631ef1db667"
@@ -726,7 +942,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1080,
+        "y": 940,
         "wires": [
             [
                 "64417631ef1db667"
@@ -754,33 +970,10 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1120,
+        "y": 980,
         "wires": [
             [
                 "64417631ef1db667"
-            ]
-        ]
-    },
-    {
-        "id": "884cd80db159ba73",
-        "type": "mqtt in",
-        "z": "3e84c5cf3d615558",
-        "d": true,
-        "name": "output",
-        "topic": "lasermaze/+/output/#",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "250ff9a.803fb06",
-        "nl": false,
-        "rap": false,
-        "inputs": 0,
-        "x": 110,
-        "y": 440,
-        "wires": [
-            [
-                "6366b9f7099b2504",
-                "f527869152666abd",
-                "dd8cf75906fb1eeb"
             ]
         ]
     },
@@ -796,7 +989,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 360,
+        "y": 180,
         "wires": [
             [
                 "938183fecbd6c72a"
@@ -841,7 +1034,7 @@
         "repair": false,
         "outputs": 5,
         "x": 170,
-        "y": 640,
+        "y": 500,
         "wires": [
             [
                 "db738f6988c32b6a"
@@ -870,7 +1063,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 580,
+        "y": 440,
         "wires": [
             [
                 "2b33a8e0e82b32b2"
@@ -892,7 +1085,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 620,
+        "y": 480,
         "wires": [
             [
                 "65a512e69c4e583f"
@@ -914,7 +1107,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 660,
+        "y": 520,
         "wires": [
             [
                 "b1132ba4ef6e1271"
@@ -936,7 +1129,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 700,
+        "y": 560,
         "wires": [
             [
                 "98342fb2dfc9ceab"
@@ -958,7 +1151,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 400,
+        "y": 220,
         "wires": [
             [
                 "4ade8d8944341686"
@@ -1003,7 +1196,7 @@
         "repair": false,
         "outputs": 5,
         "x": 170,
-        "y": 980,
+        "y": 840,
         "wires": [
             [
                 "bcb42c1f54b73039"
@@ -1032,7 +1225,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 920,
+        "y": 780,
         "wires": [
             [
                 "cf44632ef64a88b5"
@@ -1054,7 +1247,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 960,
+        "y": 820,
         "wires": [
             [
                 "57b6751c7d85d927"
@@ -1076,7 +1269,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1000,
+        "y": 860,
         "wires": [
             [
                 "95b10b21856e5aa4"
@@ -1098,7 +1291,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1040,
+        "y": 900,
         "wires": [
             [
                 "b75d9721ed3e5491"
@@ -1129,7 +1322,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1180,
+        "y": 1040,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1157,7 +1350,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1220,
+        "y": 1080,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1185,7 +1378,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1260,
+        "y": 1120,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1213,7 +1406,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1300,
+        "y": 1160,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1241,7 +1434,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1340,
+        "y": 1200,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1269,7 +1462,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1380,
+        "y": 1240,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1297,7 +1490,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1420,
+        "y": 1280,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1325,7 +1518,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1460,
+        "y": 1320,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1353,7 +1546,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1500,
+        "y": 1360,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1381,7 +1574,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1540,
+        "y": 1400,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1409,7 +1602,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1580,
+        "y": 1440,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1437,7 +1630,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1620,
+        "y": 1480,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1465,7 +1658,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1660,
+        "y": 1520,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1493,7 +1686,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1700,
+        "y": 1560,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1512,7 +1705,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 440,
+        "y": 260,
         "wires": [
             [
                 "148a6482ca034d22"
@@ -1572,7 +1765,7 @@
         "repair": false,
         "outputs": 8,
         "x": 130,
-        "y": 1480,
+        "y": 1340,
         "wires": [
             [
                 "6cc20f463a18e115"
@@ -1612,7 +1805,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1340,
+        "y": 1200,
         "wires": [
             [
                 "e652067f921821a7"
@@ -1634,7 +1827,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1380,
+        "y": 1240,
         "wires": [
             [
                 "fcccb6d1c053b19c"
@@ -1656,7 +1849,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1420,
+        "y": 1280,
         "wires": [
             [
                 "93f4dc590c330dbc"
@@ -1678,7 +1871,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1460,
+        "y": 1320,
         "wires": [
             [
                 "f30c6b9b151a706e"
@@ -1700,7 +1893,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1500,
+        "y": 1360,
         "wires": [
             [
                 "4bdf1ff4d425a754"
@@ -1722,7 +1915,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1540,
+        "y": 1400,
         "wires": [
             [
                 "8c9c9cebfe559524"
@@ -1744,7 +1937,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1580,
+        "y": 1440,
         "wires": [
             [
                 "37cff7924070bc39"
@@ -1766,7 +1959,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 1620,
+        "y": 1480,
         "wires": [
             [
                 "46688c056e01e066"
@@ -1797,7 +1990,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 590,
-        "y": 1740,
+        "y": 1600,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1825,7 +2018,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 600,
-        "y": 1780,
+        "y": 1640,
         "wires": [
             [
                 "de8bd57756400535"
@@ -1844,7 +2037,7 @@
         "finalize": "",
         "libs": [],
         "x": 900,
-        "y": 1480,
+        "y": 1340,
         "wires": [
             [
                 "179ff4162a99f002"
@@ -1863,13 +2056,14 @@
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 110,
-        "y": 360,
+        "x": 90,
+        "y": 220,
         "wires": [
             [
                 "6366b9f7099b2504",
                 "f527869152666abd",
-                "dd8cf75906fb1eeb"
+                "dd8cf75906fb1eeb",
+                "45ddc3f75e2737b5"
             ]
         ]
     },
@@ -1894,7 +2088,7 @@
         "topic": "lasermaze/14530877/output/9/",
         "payload": "0",
         "payloadType": "num",
-        "x": 320,
+        "x": 600,
         "y": 260,
         "wires": [
             [
@@ -1923,8 +2117,8 @@
         "topic": "lasermaze/14493860/output/9/",
         "payload": "0",
         "payloadType": "num",
-        "x": 320,
-        "y": 300,
+        "x": 600,
+        "y": 220,
         "wires": [
             [
                 "8b733a605e170392"
@@ -1952,203 +2146,13 @@
         "topic": "lasermaze/14769654/output/9/",
         "payload": "0",
         "payloadType": "num",
-        "x": 320,
-        "y": 220,
+        "x": 600,
+        "y": 180,
         "wires": [
             [
                 "8b733a605e170392"
             ]
         ]
-    },
-    {
-        "id": "ed23cb4ea754bf93",
-        "type": "inject",
-        "z": "3e84c5cf3d615558",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "6",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "date",
-        "x": 310,
-        "y": 120,
-        "wires": [
-            [
-                "5d94d15c5ea0a83a"
-            ]
-        ]
-    },
-    {
-        "id": "5d94d15c5ea0a83a",
-        "type": "function",
-        "z": "3e84c5cf3d615558",
-        "name": "14769654",
-        "func": "const id = 14769654;\nconst maxPort = 4;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 470,
-        "y": 120,
-        "wires": [
-            [
-                "bb1b84fe07b3b4ad"
-            ]
-        ]
-    },
-    {
-        "id": "2ee598119456dd7c",
-        "type": "function",
-        "z": "3e84c5cf3d615558",
-        "name": "14493860",
-        "func": "const id = 14493860;\nconst maxPort = 4;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 470,
-        "y": 160,
-        "wires": [
-            [
-                "bb1b84fe07b3b4ad"
-            ]
-        ]
-    },
-    {
-        "id": "bb1b84fe07b3b4ad",
-        "type": "mqtt out",
-        "z": "3e84c5cf3d615558",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "250ff9a.803fb06",
-        "x": 690,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "dc3be2e79d78acf2",
-        "type": "inject",
-        "z": "3e84c5cf3d615558",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "date",
-        "x": 310,
-        "y": 160,
-        "wires": [
-            [
-                "2ee598119456dd7c"
-            ]
-        ]
-    },
-    {
-        "id": "3dc1029ef6e0720f",
-        "type": "comment",
-        "z": "3e84c5cf3d615558",
-        "name": "4-relay - 1",
-        "info": "",
-        "x": 140,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "d071ae437e417a5c",
-        "type": "comment",
-        "z": "3e84c5cf3d615558",
-        "name": "4-relay - 2",
-        "info": "",
-        "x": 140,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "3734d1f4f49979f8",
-        "type": "inject",
-        "z": "3e84c5cf3d615558",
-        "d": true,
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "0.5",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "date",
-        "x": 310,
-        "y": 80,
-        "wires": [
-            [
-                "f467136814a854bc"
-            ]
-        ]
-    },
-    {
-        "id": "f467136814a854bc",
-        "type": "function",
-        "z": "3e84c5cf3d615558",
-        "name": "14530877",
-        "func": "const id = 14530877;\nconst maxPort = 8;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 470,
-        "y": 80,
-        "wires": [
-            [
-                "bb1b84fe07b3b4ad"
-            ]
-        ]
-    },
-    {
-        "id": "43e14fc064cf04bc",
-        "type": "comment",
-        "z": "3e84c5cf3d615558",
-        "name": "8-output - 3",
-        "info": "",
-        "x": 130,
-        "y": 80,
-        "wires": []
     },
     {
         "id": "8b733a605e170392",
@@ -2164,8 +2168,21 @@
         "correl": "",
         "expiry": "",
         "broker": "250ff9a.803fb06",
-        "x": 510,
-        "y": 260,
+        "x": 870,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "45ddc3f75e2737b5",
+        "type": "link out",
+        "z": "3e84c5cf3d615558",
+        "name": "State",
+        "mode": "link",
+        "links": [
+            "e0113d9f613618fd"
+        ],
+        "x": 275,
+        "y": 140,
         "wires": []
     },
     {
@@ -2181,12 +2198,13 @@
         "rap": false,
         "inputs": 0,
         "x": 120,
-        "y": 400,
+        "y": 520,
         "wires": [
             [
                 "0659549ac6e0af0f",
                 "8c5964e962f7613e",
-                "486eacf8f39143a4"
+                "486eacf8f39143a4",
+                "d2af7c6733654f4f"
             ]
         ]
     },
@@ -2204,7 +2222,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 290,
-        "y": 360,
+        "y": 480,
         "wires": []
     },
     {
@@ -2219,7 +2237,7 @@
         "finalize": "",
         "libs": [],
         "x": 300,
-        "y": 400,
+        "y": 520,
         "wires": [
             [
                 "6b4f417cc7429e2e"
@@ -2254,7 +2272,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 280,
+        "y": 400,
         "wires": []
     },
     {
@@ -2285,7 +2303,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 440,
+        "y": 560,
         "wires": []
     },
     {
@@ -2316,7 +2334,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 320,
+        "y": 440,
         "wires": []
     },
     {
@@ -2347,7 +2365,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 360,
+        "y": 480,
         "wires": []
     },
     {
@@ -2378,7 +2396,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 400,
+        "y": 520,
         "wires": []
     },
     {
@@ -2409,7 +2427,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 480,
+        "y": 600,
         "wires": []
     },
     {
@@ -2440,7 +2458,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 520,
+        "y": 640,
         "wires": []
     },
     {
@@ -2491,7 +2509,7 @@
         "repair": false,
         "outputs": 7,
         "x": 450,
-        "y": 400,
+        "y": 520,
         "wires": [
             [
                 "9778381ddff2d206"
@@ -2520,15 +2538,15 @@
         "id": "8c5964e962f7613e",
         "type": "function",
         "z": "14b665ce20ae005d",
-        "name": "2 - 14733772",
-        "func": "const id = 14733772;\nconst maxPort = 6;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n\nlet mqttTopic = msg.topic;\nlet topics = mqttTopic.split('/');\nlet device = topics[1];\n\nif(device.toString() === id.toString()){\n    let state = msg.payload;\n    msg.payload = state;\n    msg.id = device;\n    msg.state = state;\n    msg.port = topics[3];\n    node.send(msg);\n}\n\n\n\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "name": "x - 14771609",
+        "func": "const id = 14771609;\nconst maxPort = 6;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n\nlet mqttTopic = msg.topic;\nlet topics = mqttTopic.split('/');\nlet device = topics[1];\n\nif(device.toString() === id.toString()){\n    let state = msg.payload;\n    msg.payload = state;\n    msg.id = device;\n    msg.state = state;\n    msg.port = topics[3];\n    node.send(msg);\n}\n\n\n\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 300,
-        "y": 700,
+        "x": 290,
+        "y": 1040,
         "wires": [
             [
                 "51d8204139e7af17"
@@ -2540,7 +2558,7 @@
         "type": "ui_led",
         "z": "14b665ce20ae005d",
         "order": 1,
-        "group": "d669fe7b63ed71a3",
+        "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
         "label": "0",
@@ -2563,15 +2581,15 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 580,
+        "y": 920,
         "wires": []
     },
     {
         "id": "066cb6edfc5a1dbd",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 5,
-        "group": "d669fe7b63ed71a3",
+        "order": 4,
+        "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
         "label": "4",
@@ -2594,15 +2612,15 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 740,
+        "y": 1080,
         "wires": []
     },
     {
         "id": "606176a17ddc267b",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 2,
-        "group": "d669fe7b63ed71a3",
+        "order": 7,
+        "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
         "label": "1",
@@ -2625,15 +2643,15 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 620,
+        "y": 960,
         "wires": []
     },
     {
         "id": "14574879c2e9d47c",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 3,
-        "group": "d669fe7b63ed71a3",
+        "order": 2,
+        "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
         "label": "2",
@@ -2656,15 +2674,15 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 660,
+        "y": 1000,
         "wires": []
     },
     {
         "id": "59e83c97c3603d3e",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 4,
-        "group": "d669fe7b63ed71a3",
+        "order": 3,
+        "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
         "label": "3",
@@ -2687,15 +2705,15 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 700,
+        "y": 1040,
         "wires": []
     },
     {
         "id": "33b6a84f26a1f180",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 6,
-        "group": "d669fe7b63ed71a3",
+        "order": 5,
+        "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
         "label": "5",
@@ -2718,15 +2736,15 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 780,
+        "y": 1120,
         "wires": []
     },
     {
         "id": "f80c9aa97a754b79",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 7,
-        "group": "d669fe7b63ed71a3",
+        "order": 6,
+        "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
         "label": "6",
@@ -2749,7 +2767,7 @@
         "showGlow": true,
         "name": "",
         "x": 650,
-        "y": 820,
+        "y": 1160,
         "wires": []
     },
     {
@@ -2800,7 +2818,7 @@
         "repair": false,
         "outputs": 7,
         "x": 450,
-        "y": 700,
+        "y": 1040,
         "wires": [
             [
                 "7e9b456f6a38e41b"
@@ -2838,7 +2856,7 @@
         "rap": false,
         "inputs": 0,
         "x": 120,
-        "y": 220,
+        "y": 340,
         "wires": [
             [
                 "afacc9198954a73f"
@@ -2857,7 +2875,7 @@
         "finalize": "",
         "libs": [],
         "x": 310,
-        "y": 220,
+        "y": 340,
         "wires": [
             [
                 "7dec996ed7f7259a",
@@ -2904,7 +2922,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 650,
-        "y": 220,
+        "y": 340,
         "wires": [
             []
         ]
@@ -2923,7 +2941,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 490,
-        "y": 180,
+        "y": 300,
         "wires": []
     },
     {
@@ -2948,37 +2966,7 @@
         "payload": "0",
         "payloadType": "num",
         "x": 150,
-        "y": 100,
-        "wires": [
-            [
-                "fcca2048077acd7a"
-            ]
-        ]
-    },
-    {
-        "id": "334d173d40f9b6f6",
-        "type": "inject",
-        "z": "14b665ce20ae005d",
-        "d": true,
-        "name": "9@14493860",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "31",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "lasermaze/14493860/output/9/",
-        "payload": "0",
-        "payloadType": "num",
-        "x": 140,
-        "y": 140,
+        "y": 180,
         "wires": [
             [
                 "fcca2048077acd7a"
@@ -3007,7 +2995,7 @@
         "payload": "0",
         "payloadType": "num",
         "x": 150,
-        "y": 60,
+        "y": 140,
         "wires": [
             [
                 "fcca2048077acd7a"
@@ -3029,8 +3017,369 @@
         "expiry": "",
         "broker": "250ff9a.803fb06",
         "x": 390,
-        "y": 100,
+        "y": 180,
         "wires": []
+    },
+    {
+        "id": "019c81e93194311f",
+        "type": "trigger",
+        "z": "14b665ce20ae005d",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "val",
+        "op2type": "val",
+        "duration": "250",
+        "extend": "false",
+        "overrideDelay": "false",
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 390,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5b6f15242c9ee3dd",
+        "type": "inject",
+        "z": "14b665ce20ae005d",
+        "name": "9@x - 14771609",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "35",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14771609/input/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "fcca2048077acd7a"
+            ]
+        ]
+    },
+    {
+        "id": "d2af7c6733654f4f",
+        "type": "function",
+        "z": "14b665ce20ae005d",
+        "name": "2 - 14733772",
+        "func": "const id = 14733772;\nconst maxPort = 6;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n\nlet mqttTopic = msg.topic;\nlet topics = mqttTopic.split('/');\nlet device = topics[1];\n\nif(device.toString() === id.toString()){\n    let state = msg.payload;\n    msg.payload = state;\n    msg.id = device;\n    msg.state = state;\n    msg.port = topics[3];\n    node.send(msg);\n}\n\n\n\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 780,
+        "wires": [
+            [
+                "1599c7bc0a97ca40"
+            ]
+        ]
+    },
+    {
+        "id": "c42ae7bdccbd45be",
+        "type": "ui_led",
+        "z": "14b665ce20ae005d",
+        "order": 1,
+        "group": "d669fe7b63ed71a3",
+        "width": 0,
+        "height": 0,
+        "label": "0",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 810,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "19b8ae90d01fd54a",
+        "type": "ui_led",
+        "z": "14b665ce20ae005d",
+        "order": 5,
+        "group": "d669fe7b63ed71a3",
+        "width": 0,
+        "height": 0,
+        "label": "4",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 810,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "7d89c4a703a15343",
+        "type": "ui_led",
+        "z": "14b665ce20ae005d",
+        "order": 2,
+        "group": "d669fe7b63ed71a3",
+        "width": 0,
+        "height": 0,
+        "label": "1",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 810,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "eac7647e99f70cde",
+        "type": "ui_led",
+        "z": "14b665ce20ae005d",
+        "order": 3,
+        "group": "d669fe7b63ed71a3",
+        "width": 0,
+        "height": 0,
+        "label": "2",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 810,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "76091ae55c55eeb2",
+        "type": "ui_led",
+        "z": "14b665ce20ae005d",
+        "order": 4,
+        "group": "d669fe7b63ed71a3",
+        "width": 0,
+        "height": 0,
+        "label": "3",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 810,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "fe06a67afc8e69da",
+        "type": "ui_led",
+        "z": "14b665ce20ae005d",
+        "order": 6,
+        "group": "d669fe7b63ed71a3",
+        "width": 0,
+        "height": 0,
+        "label": "5",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 810,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "12f6c3af52b7c0e2",
+        "type": "ui_led",
+        "z": "14b665ce20ae005d",
+        "order": 7,
+        "group": "d669fe7b63ed71a3",
+        "width": 0,
+        "height": 0,
+        "label": "6",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 810,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "1599c7bc0a97ca40",
+        "type": "switch",
+        "z": "14b665ce20ae005d",
+        "name": "",
+        "property": "port",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 7,
+        "x": 610,
+        "y": 780,
+        "wires": [
+            [
+                "c42ae7bdccbd45be"
+            ],
+            [
+                "7d89c4a703a15343"
+            ],
+            [
+                "eac7647e99f70cde"
+            ],
+            [
+                "76091ae55c55eeb2"
+            ],
+            [
+                "19b8ae90d01fd54a"
+            ],
+            [
+                "fe06a67afc8e69da"
+            ],
+            [
+                "12f6c3af52b7c0e2"
+            ]
+        ]
     },
     {
         "id": "3620555d11c280fd",
@@ -3296,6 +3645,20 @@
             [
                 "cace73046eeb123d"
             ]
+        ]
+    },
+    {
+        "id": "e0113d9f613618fd",
+        "type": "link in",
+        "z": "1007930ba5f8f5d0",
+        "name": "State-game",
+        "links": [
+            "45ddc3f75e2737b5"
+        ],
+        "x": 225,
+        "y": 160,
+        "wires": [
+            []
         ]
     }
 ]
