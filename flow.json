@@ -24,19 +24,19 @@
         "env": []
     },
     {
-        "id": "49fbf15f.3b175",
-        "type": "tab",
-        "label": "Flow 1",
-        "disabled": true,
-        "info": ""
-    },
-    {
         "id": "1007930ba5f8f5d0",
         "type": "tab",
         "label": "Game",
         "disabled": false,
         "info": "",
         "env": []
+    },
+    {
+        "id": "49fbf15f.3b175",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": true,
+        "info": ""
     },
     {
         "id": "250ff9a.803fb06",
@@ -2243,7 +2243,8 @@
         "links": [
             "210bb4b30731e987",
             "79e4f3ae43d7e057",
-            "e9bfb897dcbc2115"
+            "e9bfb897dcbc2115",
+            "32c7222aaba9a015"
         ],
         "x": 915,
         "y": 980,
@@ -2657,7 +2658,7 @@
         "id": "066cb6edfc5a1dbd",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 4,
+        "order": 5,
         "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
@@ -2688,7 +2689,7 @@
         "id": "606176a17ddc267b",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 7,
+        "order": 2,
         "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
@@ -2719,7 +2720,7 @@
         "id": "14574879c2e9d47c",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 2,
+        "order": 3,
         "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
@@ -2750,7 +2751,7 @@
         "id": "59e83c97c3603d3e",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 3,
+        "order": 4,
         "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
@@ -2781,7 +2782,7 @@
         "id": "33b6a84f26a1f180",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 5,
+        "order": 6,
         "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
@@ -2812,7 +2813,7 @@
         "id": "f80c9aa97a754b79",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
-        "order": 6,
+        "order": 7,
         "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
@@ -3459,11 +3460,786 @@
         "links": [
             "e0113d9f613618fd",
             "c14b66e0da959137",
-            "dee4c8a2fc5bcfa4"
+            "dee4c8a2fc5bcfa4",
+            "dbc9c83e42bab0a2"
         ],
         "x": 225,
         "y": 440,
         "wires": []
+    },
+    {
+        "id": "444a4311f2a074bd",
+        "type": "inject",
+        "z": "1007930ba5f8f5d0",
+        "name": "Set default",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "55e43c362ad831ae"
+            ]
+        ]
+    },
+    {
+        "id": "55e43c362ad831ae",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Configure flow context data",
+        "func": "const _stateTemplate = {\n    \"gate\": [\n        {\n            \"RXNode\": 14734117,\n            \"RXPort\": 0,\n            \"stateRX\": \"0\",\n            \"TXNode\": 14530877,\n            \"TXPort\": 0,\n            \"stateTX\": \"1\"\n        },\n        {\n            \"RXNode\": 14734117,\n            \"RXPort\": 1,\n            \"stateRX\": \"0\",\n            \"TXNode\": 14530877,\n            \"TXPort\": 1,\n            \"stateTX\": \"1\"\n        },\n        {\n            \"RXNode\": 14734117,\n            \"RXPort\": 2,\n            \"stateRX\": \"0\",\n            \"TXNode\": 14530877,\n            \"TXPort\": 2,\n            \"stateTX\": \"1\"\n        }\n        // ,\n        // {\n        //     \"RXNode\": 14734117,\n        //     \"RXPort\": 3,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 14530877,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14734117,\n        //     \"RXPort\": 4,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 14530877,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14734117,\n        //     \"RXPort\": 5,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 14530877,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14734117,\n        //     \"RXPort\": 6,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 14530877,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 0,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 1,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 2,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 3,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 4,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 5,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 6,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 0,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 1,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 2,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 3,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 4,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 5,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 6,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // }\n    ],\n    \"gameState\": {\n        \"RXNode\": 14733772,\n        \"RXPort\": 3,\n        \"stateRX\": \"0\",\n        \"TXNode\": 14769654,\n        \"TXPort\": 0,\n        \"stateTX\": 0,\n        \"state\": \"state_idle\"\n    },\n    \"alarm\": {\n        \"TXNode\": 14493860,\n        \"TXPort\": 0,\n        \"stateTX\": 0,\n    },\n    \"endButton\": {\n        \"RXNode\": 14733772,\n        \"RXPort\": 6,\n        \"stateRX\": \"0\",\n        \"TXNode\": 14493860,\n        \"TXPort\": 1,\n        \"stateTX\": 0,\n        \"gameState\": \"state_idle\"\n    }\n}\n\nflow.set(\"mazeState\", _stateTemplate);\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.payload = false;\n    msg.contextData = \"ERROR setting context data\";\n}else{\n    msg.payload = true;\n    msg.contextData = state;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 80,
+        "wires": [
+            [
+                "a2e6ae904e37f0bb"
+            ]
+        ]
+    },
+    {
+        "id": "a2e6ae904e37f0bb",
+        "type": "debug",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "fc27825f7ded3de2",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Set all TX",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nlet input = msg.payload;\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR setting context data\";\n    return msg;\n}else{\n    // for (let i=0 ; i < state.gate.length ; i++){\n    //     state.gate[i].stateTX = state;\n    // }\n    \n    // MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    \n    for (let i=0 ; i < state.gate.length ; i++) {\n        msg.topic = \"lasermaze/\" + state.gate[i].TXNode + \"/output/\" + state.gate[i].TXPort + \"/\";\n        state.gate[i].stateTX = input.toString();\n        msg.payload = state.gate[i].stateTX;\n        node.send(msg);\n    }\n    \n    flow.set(\"mazeState\", state);\n    msg.contextData = state;\n}\n\n    \n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 220,
+        "wires": [
+            [
+                "c81a9650759dabd2",
+                "210bb4b30731e987"
+            ]
+        ]
+    },
+    {
+        "id": "b2ae27903b53247d",
+        "type": "inject",
+        "z": "1007930ba5f8f5d0",
+        "name": "All ON",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "str",
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "fc27825f7ded3de2"
+            ]
+        ]
+    },
+    {
+        "id": "c81a9650759dabd2",
+        "type": "debug",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "210bb4b30731e987",
+        "type": "link out",
+        "z": "1007930ba5f8f5d0",
+        "name": "To MQTT",
+        "mode": "link",
+        "links": [
+            "3a55666fddd57745"
+        ],
+        "x": 755,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "f7a1d63f84284acc",
+        "type": "ui_button",
+        "z": "1007930ba5f8f5d0",
+        "name": "All ON",
+        "group": "bab506bef351856a",
+        "order": 1,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "All ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "fc27825f7ded3de2"
+            ]
+        ]
+    },
+    {
+        "id": "583c58508f50ccc5",
+        "type": "ui_button",
+        "z": "1007930ba5f8f5d0",
+        "name": "All OFF",
+        "group": "bab506bef351856a",
+        "order": 2,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "All OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "fc27825f7ded3de2"
+            ]
+        ]
+    },
+    {
+        "id": "d2088bf388403597",
+        "type": "inject",
+        "z": "1007930ba5f8f5d0",
+        "name": "All OFF",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "str",
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "fc27825f7ded3de2"
+            ]
+        ]
+    },
+    {
+        "id": "c14b66e0da959137",
+        "type": "link in",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "links": [
+            "569bb307f1dce85b"
+        ],
+        "x": 215,
+        "y": 400,
+        "wires": [
+            [
+                "4e30df5f90534f7b"
+            ]
+        ]
+    },
+    {
+        "id": "4e30df5f90534f7b",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Process input events",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    msg.contextData = state;\n    \n    // MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n\n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n    \n    \n    for (let i=0 ; i < state.gate.length ; i++) {\n        if((device === state.gate[i].RXNode) && \n           (port === state.gate[i].RXPort) && \n           (msg.payload !== state.gate[i].stateTX) &&\n           (state.gameState.state === \"state_armed\")){\n            // ALARM\n            msg.topic = \"lasermaze/\" + state.alarm.TXNode + \"/output/\" + state.alarm.TXPort + \"/\";\n            state.alarm.stateTX = ON;\n            msg.payload = state.alarm.stateTX;\n            // msg.payload = true;\n            flow.set(\"mazeState\", state);\n            node.send(msg);\n        }\n    }\n    \n    \n}\n\n    \n    \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 400,
+        "wires": [
+            [
+                "79e4f3ae43d7e057",
+                "06f310fcd8475c86"
+            ]
+        ]
+    },
+    {
+        "id": "cca1f98857b49745",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Process output events",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n    \n    \n    for (let i=0 ; i < state.gate.length ; i++) {\n        if((device === state.gate[i].TXNode) && (port === state.gate[i].TXPort)){\n            state.gate[i].stateTX = msg.payload;\n            // flow.set(\"mazeState\", state);\n            msg.contextData = state;\n            node.send(msg);\n        }\n    }\n    \n    if((device === state.gameState.RXNode) && (port === state.gameState.RXPort)){\n        state.gameState.stateRX = msg.payload;\n        // flow.set(\"mazeState\", state);\n        msg.contextData = state;\n        node.send(msg);\n    }\n    flow.set(\"mazeState\", state);\n    // msg.contextData = state;\n    // node.send(msg);\n}\n\n\n    \n    \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "63f160e754692197"
+            ]
+        ]
+    },
+    {
+        "id": "63f160e754692197",
+        "type": "debug",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7982c6c542d663f9",
+        "type": "link in",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "links": [
+            "45ddc3f75e2737b5"
+        ],
+        "x": 215,
+        "y": 360,
+        "wires": [
+            [
+                "cca1f98857b49745"
+            ]
+        ]
+    },
+    {
+        "id": "b86725c4e8a7aaf4",
+        "type": "ui_button",
+        "z": "1007930ba5f8f5d0",
+        "name": "ARMED",
+        "group": "c489d944ca7cafd9",
+        "order": 1,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "ARMED",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "className": "",
+        "icon": "",
+        "payload": "state_armed",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 580,
+        "y": 520,
+        "wires": [
+            [
+                "44b4e817621dc4eb"
+            ]
+        ]
+    },
+    {
+        "id": "06d0710a42d8500f",
+        "type": "ui_button",
+        "z": "1007930ba5f8f5d0",
+        "name": "SAFE",
+        "group": "c489d944ca7cafd9",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "SAFE",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "green",
+        "className": "",
+        "icon": "",
+        "payload": "state_safe",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 570,
+        "y": 560,
+        "wires": [
+            [
+                "44b4e817621dc4eb"
+            ]
+        ]
+    },
+    {
+        "id": "160b60bbbffbab0f",
+        "type": "inject",
+        "z": "1007930ba5f8f5d0",
+        "name": "sate_safe",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "state_safe",
+        "payloadType": "str",
+        "x": 560,
+        "y": 640,
+        "wires": [
+            [
+                "44b4e817621dc4eb"
+            ]
+        ]
+    },
+    {
+        "id": "a58531692d11736f",
+        "type": "inject",
+        "z": "1007930ba5f8f5d0",
+        "name": "sate_armed",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "state_armed",
+        "payloadType": "str",
+        "x": 570,
+        "y": 680,
+        "wires": [
+            [
+                "44b4e817621dc4eb"
+            ]
+        ]
+    },
+    {
+        "id": "44b4e817621dc4eb",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Set game state",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    \n    state.gameState.state = msg.payload;\n    \n    /// MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    msg.topic = \"lasermaze/\" + state.gameState.TXNode + \"/output/\" + state.gameState.TXPort + \"/\";\n    \n    if(msg.payload === \"state_safe\"){\n        state.gameState.stateTX = OFF;\n    }else if(msg.payload === \"state_armed\"){\n        state.gameState.stateTX = ON;\n    }\n    msg.payload = state.gameState.stateTX;\n    \n    flow.set(\"mazeState\", state);\n    msg.contextData = state;\n    node.send(msg);\n}\n\n\n    \n    \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 580,
+        "wires": [
+            [
+                "e9bfb897dcbc2115"
+            ]
+        ]
+    },
+    {
+        "id": "4c7c9903e1bd03c4",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "func": "var msgArmed = {};\nvar msgSafe = {};\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n\n    msg.contextData = state;\n    \n    if(state.gameState.state === \"state_safe\"){\n        // disable off button\n        msgSafe.enabled = false;\n        msgArmed.enabled = true;\n    }else if(state.gameState.state === \"state_armed\"){\n        // disable on button\n        msgSafe.enabled = true;\n        msgArmed.enabled = false;\n    }\n    node.send([[msgArmed],[msgSafe]]);\n\n}\n",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 540,
+        "wires": [
+            [
+                "b86725c4e8a7aaf4"
+            ],
+            [
+                "06d0710a42d8500f"
+            ]
+        ]
+    },
+    {
+        "id": "ed3a74366920558a",
+        "type": "complete",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "scope": [
+            "44b4e817621dc4eb"
+        ],
+        "uncaught": false,
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "4c7c9903e1bd03c4"
+            ]
+        ]
+    },
+    {
+        "id": "79e4f3ae43d7e057",
+        "type": "link out",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "3a55666fddd57745"
+        ],
+        "x": 1055,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "06f310fcd8475c86",
+        "type": "delay",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 440,
+        "wires": [
+            [
+                "ac03378451bb917b"
+            ]
+        ]
+    },
+    {
+        "id": "ab710b635420a906",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Switch off Alarm horn",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    msg.contextData = state;\n    \n    // MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    \n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n\n    msg.topic = \"lasermaze/\" + state.alarm.TXNode + \"/output/\" + state.alarm.TXPort + \"/\";\n    state.alarm.stateTX = OFF;\n    msg.payload = state.alarm.stateTX;\n    // msg.payload = true;\n    flow.set(\"mazeState\", state);\n    node.send(msg);\n}\n\n    \n    \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 440,
+        "wires": [
+            [
+                "79e4f3ae43d7e057"
+            ]
+        ]
+    },
+    {
+        "id": "dee4c8a2fc5bcfa4",
+        "type": "link in",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "links": [
+            "569bb307f1dce85b"
+        ],
+        "x": 375,
+        "y": 600,
+        "wires": [
+            [
+                "03d6addd92d8b97c"
+            ]
+        ]
+    },
+    {
+        "id": "03d6addd92d8b97c",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Test ARM-button",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    msg.contextData = state;\n    \n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n\n    if((device === state.gameState.RXNode) && (port === state.gameState.RXPort)){\n        if(msg.payload === ON){\n            msg.payload = \"state_armed\";\n        }else if(msg.payload === OFF){\n            msg.payload = \"state_safe\";\n        }\n        node.send(msg);\n    }\n    // flow.set(\"mazeState\", state);\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 600,
+        "wires": [
+            [
+                "44b4e817621dc4eb"
+            ]
+        ]
+    },
+    {
+        "id": "e9bfb897dcbc2115",
+        "type": "link out",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "3a55666fddd57745"
+        ],
+        "x": 915,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "66497f39e9318a9c",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Test END-button",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    msg.contextData = state;\n    \n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    /*\n\n    \"endButton\": {\n        \"RXNode\": 14733772,\n        \"RXPort\": 6,\n        \"stateRX\": \"0\",\n        \"TXNode\": 14493860,\n        \"TXPort\": 1,\n        \"stateTX\": 0,\n        \"gameState\": \"state_idle\"\n    \n    */\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n\n    if((device === state.endButton.RXNode) && \n       (port === state.endButton.RXPort) &&\n       (state.gameState.state === \"state_armed\")){\n        msg.topic = \"lasermaze/\" + state.endButton.TXNode + \"/output/\" + state.endButton.TXPort + \"/\";\n    \n        if(msg.payload === ON){\n            state.endButton.stateTX = ON;\n            node.send(msg);\n            // flow.set(\"mazeState\", state);\n            // msg.contextData = state;\n        }\n    }\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 780,
+        "wires": [
+            [
+                "32c7222aaba9a015",
+                "5753b0db545e9db8",
+                "cce96c52818cbe39"
+            ]
+        ]
+    },
+    {
+        "id": "dbc9c83e42bab0a2",
+        "type": "link in",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "links": [
+            "569bb307f1dce85b"
+        ],
+        "x": 215,
+        "y": 780,
+        "wires": [
+            [
+                "66497f39e9318a9c"
+            ]
+        ]
+    },
+    {
+        "id": "ac03378451bb917b",
+        "type": "trigger",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "pay",
+        "op2type": "payl",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 700,
+        "y": 440,
+        "wires": [
+            [
+                "ab710b635420a906"
+            ]
+        ]
+    },
+    {
+        "id": "32c7222aaba9a015",
+        "type": "link out",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "3a55666fddd57745"
+        ],
+        "x": 1055,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "5753b0db545e9db8",
+        "type": "delay",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 820,
+        "wires": [
+            [
+                "dac6cf3ea920dc28"
+            ]
+        ]
+    },
+    {
+        "id": "7508327c4ac1d7b7",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Switch off END horn",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    msg.contextData = state;\n    \n    // MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    \n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n\n    msg.topic = \"lasermaze/\" + state.endButton.TXNode + \"/output/\" + state.endButton.TXPort + \"/\";\n    state.endButton.stateTX = OFF;\n    msg.payload = state.endButton.stateTX;\n    \n    flow.set(\"mazeState\", state);\n    node.send(msg);\n}\n\n    \n    \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 820,
+        "wires": [
+            [
+                "32c7222aaba9a015"
+            ]
+        ]
+    },
+    {
+        "id": "dac6cf3ea920dc28",
+        "type": "trigger",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "pay",
+        "op2type": "payl",
+        "duration": "5",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 700,
+        "y": 820,
+        "wires": [
+            [
+                "7508327c4ac1d7b7"
+            ]
+        ]
+    },
+    {
+        "id": "5fac6d85b0de0270",
+        "type": "debug",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "cce96c52818cbe39",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "Set game to SAFE",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nif(msg.payload == ON){\n    msg.payload = \"state_safe\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 740,
+        "wires": [
+            [
+                "5fac6d85b0de0270",
+                "44b4e817621dc4eb"
+            ]
+        ]
     },
     {
         "id": "3620555d11c280fd",
@@ -3730,598 +4506,5 @@
                 "cace73046eeb123d"
             ]
         ]
-    },
-    {
-        "id": "444a4311f2a074bd",
-        "type": "inject",
-        "z": "1007930ba5f8f5d0",
-        "name": "Set default",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payloadType": "date",
-        "x": 360,
-        "y": 80,
-        "wires": [
-            [
-                "55e43c362ad831ae"
-            ]
-        ]
-    },
-    {
-        "id": "55e43c362ad831ae",
-        "type": "function",
-        "z": "1007930ba5f8f5d0",
-        "name": "Configure flow context data",
-        "func": "const _stateTemplate = {\n    \"gate\": [\n        {\n            \"RXNode\": 14734117,\n            \"RXPort\": 0,\n            \"stateRX\": \"0\",\n            \"TXNode\": 14530877,\n            \"TXPort\": 0,\n            \"stateTX\": \"1\"\n        },\n        {\n            \"RXNode\": 14734117,\n            \"RXPort\": 1,\n            \"stateRX\": \"0\",\n            \"TXNode\": 14530877,\n            \"TXPort\": 1,\n            \"stateTX\": \"1\"\n        },\n        {\n            \"RXNode\": 14734117,\n            \"RXPort\": 2,\n            \"stateRX\": \"0\",\n            \"TXNode\": 14530877,\n            \"TXPort\": 2,\n            \"stateTX\": \"1\"\n        }\n        // ,\n        // {\n        //     \"RXNode\": 14734117,\n        //     \"RXPort\": 3,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 14530877,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14734117,\n        //     \"RXPort\": 4,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 14530877,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14734117,\n        //     \"RXPort\": 5,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 14530877,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14734117,\n        //     \"RXPort\": 6,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 14530877,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 0,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 1,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 2,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 3,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 4,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 5,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14733772,\n        //     \"RXPort\": 6,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 1,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 0,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 1,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 2,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 3,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 4,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 5,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // },\n        // {\n        //     \"RXNode\": 14771609,\n        //     \"RXPort\": 6,\n        //     \"stateRX\": \"0\",\n        //     \"TXNode\": 2,\n        //     \"TXPort\": 0,\n        //     \"stateTX\": 0\n        // }\n    ],\n    \"gameState\": {\n        \"RXNode\": 14733772,\n        \"RXPort\": 3,\n        \"stateRX\": \"0\",\n        \"TXNode\": 14769654,\n        \"TXPort\": 1,\n        \"stateTX\": 0,\n        \"state\": \"state_idle\"\n    },\n    \"alarm\": {\n        \"TXNode\": 14493860,\n        \"TXPort\": 0,\n        \"stateTX\": 0,\n    },\n    \"endButton\": {\n        \"RXNode\": 3,\n        \"RXPort\": 6,\n        \"stateRX\": \"0\",\n        \"TXNode\": 2,\n        \"TXPort\": 0,\n        \"stateTX\": 0,\n        \"gameState\": \"state_idle\"\n    }\n}\n\nflow.set(\"mazeState\", _stateTemplate);\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.payload = false;\n    msg.contextData = \"ERROR setting context data\";\n}else{\n    msg.payload = true;\n    msg.contextData = state;\n}\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 580,
-        "y": 80,
-        "wires": [
-            [
-                "a2e6ae904e37f0bb"
-            ]
-        ]
-    },
-    {
-        "id": "a2e6ae904e37f0bb",
-        "type": "debug",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "fc27825f7ded3de2",
-        "type": "function",
-        "z": "1007930ba5f8f5d0",
-        "name": "Set all TX",
-        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nlet input = msg.payload;\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR setting context data\";\n    return msg;\n}else{\n    // for (let i=0 ; i < state.gate.length ; i++){\n    //     state.gate[i].stateTX = state;\n    // }\n    \n    // MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    \n    for (let i=0 ; i < state.gate.length ; i++) {\n        msg.topic = \"lasermaze/\" + state.gate[i].TXNode + \"/output/\" + state.gate[i].TXPort + \"/\";\n        state.gate[i].stateTX = input.toString();\n        msg.payload = state.gate[i].stateTX;\n        node.send(msg);\n    }\n    \n    flow.set(\"mazeState\", state);\n    msg.contextData = state;\n}\n\n    \n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 560,
-        "y": 220,
-        "wires": [
-            [
-                "c81a9650759dabd2",
-                "210bb4b30731e987"
-            ]
-        ]
-    },
-    {
-        "id": "b2ae27903b53247d",
-        "type": "inject",
-        "z": "1007930ba5f8f5d0",
-        "name": "All ON",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "1",
-        "payloadType": "str",
-        "x": 350,
-        "y": 160,
-        "wires": [
-            [
-                "fc27825f7ded3de2"
-            ]
-        ]
-    },
-    {
-        "id": "c81a9650759dabd2",
-        "type": "debug",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "210bb4b30731e987",
-        "type": "link out",
-        "z": "1007930ba5f8f5d0",
-        "name": "To MQTT",
-        "mode": "link",
-        "links": [
-            "3a55666fddd57745"
-        ],
-        "x": 755,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "f7a1d63f84284acc",
-        "type": "ui_button",
-        "z": "1007930ba5f8f5d0",
-        "name": "All ON",
-        "group": "bab506bef351856a",
-        "order": 1,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "All ON",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "1",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 350,
-        "y": 240,
-        "wires": [
-            [
-                "fc27825f7ded3de2"
-            ]
-        ]
-    },
-    {
-        "id": "583c58508f50ccc5",
-        "type": "ui_button",
-        "z": "1007930ba5f8f5d0",
-        "name": "All OFF",
-        "group": "bab506bef351856a",
-        "order": 2,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "All OFF",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "0",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 360,
-        "y": 280,
-        "wires": [
-            [
-                "fc27825f7ded3de2"
-            ]
-        ]
-    },
-    {
-        "id": "d2088bf388403597",
-        "type": "inject",
-        "z": "1007930ba5f8f5d0",
-        "name": "All OFF",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "0",
-        "payloadType": "str",
-        "x": 350,
-        "y": 200,
-        "wires": [
-            [
-                "fc27825f7ded3de2"
-            ]
-        ]
-    },
-    {
-        "id": "c14b66e0da959137",
-        "type": "link in",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "links": [
-            "569bb307f1dce85b"
-        ],
-        "x": 215,
-        "y": 400,
-        "wires": [
-            [
-                "4e30df5f90534f7b"
-            ]
-        ]
-    },
-    {
-        "id": "4e30df5f90534f7b",
-        "type": "function",
-        "z": "1007930ba5f8f5d0",
-        "name": "Process input events",
-        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    msg.contextData = state;\n    \n    // MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    \n    /*\n    \n    loop throught configured gates and see if input node is found\n    when found \n        see if associated TX node is on \n            when received state from input node is off give an ALARM\n        else\n            do nothing.\n    \n    */\n    \n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n    \n    \n    for (let i=0 ; i < state.gate.length ; i++) {\n        if((device === state.gate[i].RXNode) && \n           (port === state.gate[i].RXPort) && \n           (msg.payload !== state.gate[i].stateTX) &&\n           (state.gameState.state === \"state_armed\")){\n            // ALARM\n            msg.topic = \"lasermaze/\" + state.alarm.TXNode + \"/output/\" + state.alarm.TXPort + \"/\";\n            state.alarm.stateTX = ON;\n            msg.payload = state.alarm.stateTX;\n            // msg.payload = true;\n            flow.set(\"mazeState\", state);\n            node.send(msg);\n        }\n\n    }\n    \n   \n    // flow.set(\"mazeState\", state);\n    \n}\n\n    \n    \n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 400,
-        "wires": [
-            [
-                "79e4f3ae43d7e057",
-                "06f310fcd8475c86"
-            ]
-        ]
-    },
-    {
-        "id": "cca1f98857b49745",
-        "type": "function",
-        "z": "1007930ba5f8f5d0",
-        "name": "Process output events",
-        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n    \n    \n    for (let i=0 ; i < state.gate.length ; i++) {\n        if((device === state.gate[i].TXNode) && (port === state.gate[i].TXPort)){\n            state.gate[i].stateTX = msg.payload;\n            // flow.set(\"mazeState\", state);\n            msg.contextData = state;\n            node.send(msg);\n        }\n    }\n    \n    if((device === state.gameState.RXNode) && (port === state.gameState.RXPort)){\n        state.gameState.stateRX = msg.payload;\n        // flow.set(\"mazeState\", state);\n        msg.contextData = state;\n        node.send(msg);\n    }\n    flow.set(\"mazeState\", state);\n    // msg.contextData = state;\n    // node.send(msg);\n}\n\n\n    \n    \n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 360,
-        "wires": [
-            [
-                "63f160e754692197"
-            ]
-        ]
-    },
-    {
-        "id": "63f160e754692197",
-        "type": "debug",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 530,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "7982c6c542d663f9",
-        "type": "link in",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "links": [
-            "45ddc3f75e2737b5"
-        ],
-        "x": 215,
-        "y": 360,
-        "wires": [
-            [
-                "cca1f98857b49745"
-            ]
-        ]
-    },
-    {
-        "id": "b86725c4e8a7aaf4",
-        "type": "ui_button",
-        "z": "1007930ba5f8f5d0",
-        "name": "ARMED",
-        "group": "c489d944ca7cafd9",
-        "order": 1,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "ARMED",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "red",
-        "className": "",
-        "icon": "",
-        "payload": "state_armed",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 580,
-        "y": 540,
-        "wires": [
-            [
-                "44b4e817621dc4eb"
-            ]
-        ]
-    },
-    {
-        "id": "06d0710a42d8500f",
-        "type": "ui_button",
-        "z": "1007930ba5f8f5d0",
-        "name": "SAFE",
-        "group": "c489d944ca7cafd9",
-        "order": 2,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "SAFE",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "green",
-        "className": "",
-        "icon": "",
-        "payload": "state_safe",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 570,
-        "y": 580,
-        "wires": [
-            [
-                "44b4e817621dc4eb"
-            ]
-        ]
-    },
-    {
-        "id": "160b60bbbffbab0f",
-        "type": "inject",
-        "z": "1007930ba5f8f5d0",
-        "name": "sate_safe",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "state_safe",
-        "payloadType": "str",
-        "x": 560,
-        "y": 660,
-        "wires": [
-            [
-                "44b4e817621dc4eb"
-            ]
-        ]
-    },
-    {
-        "id": "a58531692d11736f",
-        "type": "inject",
-        "z": "1007930ba5f8f5d0",
-        "name": "sate_armed",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "state_armed",
-        "payloadType": "str",
-        "x": 570,
-        "y": 700,
-        "wires": [
-            [
-                "44b4e817621dc4eb"
-            ]
-        ]
-    },
-    {
-        "id": "44b4e817621dc4eb",
-        "type": "function",
-        "z": "1007930ba5f8f5d0",
-        "name": "Set game state",
-        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    \n    state.gameState.state = msg.payload;\n    \n    /// MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    msg.topic = \"lasermaze/\" + state.gameState.TXNode + \"/output/\" + state.gameState.TXPort + \"/\";\n    \n    if(msg.payload === \"state_safe\"){\n        state.gameState.stateTX = OFF;\n    }else if(msg.payload === \"state_armed\"){\n        state.gameState.stateTX = ON;\n    }\n    msg.payload = state.gameState.stateTX;\n    \n    flow.set(\"mazeState\", state);\n    msg.contextData = state;\n    node.send(msg);\n}\n\n\n    \n    \n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 800,
-        "y": 600,
-        "wires": [
-            [
-                "e9bfb897dcbc2115"
-            ]
-        ]
-    },
-    {
-        "id": "4c7c9903e1bd03c4",
-        "type": "function",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "func": "var msgArmed = {};\nvar msgSafe = {};\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n\n    msg.contextData = state;\n    \n    if(state.gameState.state === \"state_safe\"){\n        // disable off button\n        msgSafe.enabled = false;\n        msgArmed.enabled = true;\n    }else if(state.gameState.state === \"state_armed\"){\n        // disable on button\n        msgSafe.enabled = true;\n        msgArmed.enabled = false;\n    }\n    node.send([[msgArmed],[msgSafe]]);\n\n}\n",
-        "outputs": 2,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
-        "y": 560,
-        "wires": [
-            [
-                "b86725c4e8a7aaf4"
-            ],
-            [
-                "06d0710a42d8500f"
-            ]
-        ]
-    },
-    {
-        "id": "ed3a74366920558a",
-        "type": "complete",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "scope": [
-            "44b4e817621dc4eb"
-        ],
-        "uncaught": false,
-        "x": 270,
-        "y": 560,
-        "wires": [
-            [
-                "4c7c9903e1bd03c4"
-            ]
-        ]
-    },
-    {
-        "id": "79e4f3ae43d7e057",
-        "type": "link out",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "3a55666fddd57745"
-        ],
-        "x": 895,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "06f310fcd8475c86",
-        "type": "delay",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "5",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 560,
-        "y": 440,
-        "wires": [
-            [
-                "ab710b635420a906"
-            ]
-        ]
-    },
-    {
-        "id": "ab710b635420a906",
-        "type": "function",
-        "z": "1007930ba5f8f5d0",
-        "name": "Switch off Alarm horn",
-        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    msg.contextData = state;\n    \n    // MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    \n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n\n    msg.topic = \"lasermaze/\" + state.alarm.TXNode + \"/output/\" + state.alarm.TXPort + \"/\";\n    state.alarm.stateTX = OFF;\n    msg.payload = state.alarm.stateTX;\n    // msg.payload = true;\n    flow.set(\"mazeState\", state);\n    node.send(msg);\n}\n\n    \n    \n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 440,
-        "wires": [
-            [
-                "79e4f3ae43d7e057"
-            ]
-        ]
-    },
-    {
-        "id": "dee4c8a2fc5bcfa4",
-        "type": "link in",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "links": [
-            "569bb307f1dce85b"
-        ],
-        "x": 375,
-        "y": 620,
-        "wires": [
-            [
-                "03d6addd92d8b97c"
-            ]
-        ]
-    },
-    {
-        "id": "03d6addd92d8b97c",
-        "type": "function",
-        "z": "1007930ba5f8f5d0",
-        "name": "Process input events",
-        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n    msg.contextData = state;\n    \n    let mqttTopic = msg.topic;\n    let topics = mqttTopic.split('/');\n    let device = Number(topics[1]);\n    let port = Number(topics[3]);\n    \n    msg.debug = {};\n    msg.debug.topics = topics;\n    msg.debug.device = device;\n    msg.debug.port = port;\n    msg.debug.payload = msg.payload;\n\n    if((device === state.gameState.RXNode) && (port === state.gameState.RXPort)){\n        if(msg.payload === ON){\n            msg.payload = \"state_armed\";\n        }else if(msg.payload === OFF){\n            msg.payload = \"state_safe\";\n        }\n        node.send(msg);\n    }\n    // flow.set(\"mazeState\", state);\n}\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 520,
-        "y": 620,
-        "wires": [
-            [
-                "44b4e817621dc4eb"
-            ]
-        ]
-    },
-    {
-        "id": "e9bfb897dcbc2115",
-        "type": "link out",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "3a55666fddd57745"
-        ],
-        "x": 915,
-        "y": 600,
-        "wires": []
     }
 ]
