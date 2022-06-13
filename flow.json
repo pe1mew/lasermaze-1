@@ -336,11 +336,11 @@
     {
         "id": "c489d944ca7cafd9",
         "type": "ui_group",
-        "name": "Game",
+        "name": "Game state",
         "tab": "4fa174b828a925c7",
         "order": 2,
         "disp": true,
-        "width": 6,
+        "width": "9",
         "collapse": false,
         "className": ""
     },
@@ -352,6 +352,17 @@
         "order": 1,
         "disabled": false,
         "hidden": false
+    },
+    {
+        "id": "1ed9afbc1b47bb32",
+        "type": "ui_group",
+        "name": "Gate state",
+        "tab": "4fa174b828a925c7",
+        "order": 2,
+        "disp": true,
+        "width": 2,
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "dfad14d10a9fab45",
@@ -3091,29 +3102,6 @@
         "wires": []
     },
     {
-        "id": "019c81e93194311f",
-        "type": "trigger",
-        "z": "14b665ce20ae005d",
-        "name": "",
-        "op1": "1",
-        "op2": "0",
-        "op1type": "val",
-        "op2type": "val",
-        "duration": "250",
-        "extend": "false",
-        "overrideDelay": "false",
-        "units": "ms",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 390,
-        "y": 640,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "5b6f15242c9ee3dd",
         "type": "inject",
         "z": "14b665ce20ae005d",
@@ -3461,7 +3449,10 @@
             "e0113d9f613618fd",
             "c14b66e0da959137",
             "dee4c8a2fc5bcfa4",
-            "dbc9c83e42bab0a2"
+            "dbc9c83e42bab0a2",
+            "d7b1c21335cf4b2c",
+            "e25f4bc07007e864",
+            "399f7f444511f178"
         ],
         "x": 225,
         "y": 440,
@@ -3701,7 +3692,9 @@
         "z": "1007930ba5f8f5d0",
         "name": "",
         "links": [
-            "569bb307f1dce85b"
+            "569bb307f1dce85b",
+            "15e43c7b7bfe7933",
+            "e15b1efed531b332"
         ],
         "x": 215,
         "y": 400,
@@ -3746,7 +3739,8 @@
         "y": 360,
         "wires": [
             [
-                "63f160e754692197"
+                "63f160e754692197",
+                "4c7c9903e1bd03c4"
             ]
         ]
     },
@@ -3787,37 +3781,9 @@
         "id": "b86725c4e8a7aaf4",
         "type": "ui_button",
         "z": "1007930ba5f8f5d0",
-        "name": "ARMED",
-        "group": "c489d944ca7cafd9",
-        "order": 1,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "ARMED",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "red",
-        "className": "",
-        "icon": "",
-        "payload": "state_armed",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 580,
-        "y": 520,
-        "wires": [
-            [
-                "44b4e817621dc4eb"
-            ]
-        ]
-    },
-    {
-        "id": "06d0710a42d8500f",
-        "type": "ui_button",
-        "z": "1007930ba5f8f5d0",
         "name": "SAFE",
         "group": "c489d944ca7cafd9",
-        "order": 2,
+        "order": 1,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -3827,16 +3793,40 @@
         "bgcolor": "green",
         "className": "",
         "icon": "",
-        "payload": "state_safe",
+        "payload": "state_armed",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
         "x": 570,
         "y": 560,
         "wires": [
-            [
-                "44b4e817621dc4eb"
-            ]
+            []
+        ]
+    },
+    {
+        "id": "06d0710a42d8500f",
+        "type": "ui_button",
+        "z": "1007930ba5f8f5d0",
+        "name": "ARMED",
+        "group": "c489d944ca7cafd9",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "ARMED",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "red",
+        "className": "",
+        "icon": "",
+        "payload": "state_safe",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 580,
+        "y": 520,
+        "wires": [
+            []
         ]
     },
     {
@@ -3861,7 +3851,7 @@
         "payload": "state_safe",
         "payloadType": "str",
         "x": 560,
-        "y": 640,
+        "y": 680,
         "wires": [
             [
                 "44b4e817621dc4eb"
@@ -3890,7 +3880,7 @@
         "payload": "state_armed",
         "payloadType": "str",
         "x": 570,
-        "y": 680,
+        "y": 720,
         "wires": [
             [
                 "44b4e817621dc4eb"
@@ -3909,7 +3899,7 @@
         "finalize": "",
         "libs": [],
         "x": 800,
-        "y": 580,
+        "y": 620,
         "wires": [
             [
                 "e9bfb897dcbc2115"
@@ -3921,20 +3911,23 @@
         "type": "function",
         "z": "1007930ba5f8f5d0",
         "name": "",
-        "func": "var msgArmed = {};\nvar msgSafe = {};\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n\n    msg.contextData = state;\n    \n    if(state.gameState.state === \"state_safe\"){\n        // disable off button\n        msgSafe.enabled = false;\n        msgArmed.enabled = true;\n    }else if(state.gameState.state === \"state_armed\"){\n        // disable on button\n        msgSafe.enabled = true;\n        msgArmed.enabled = false;\n    }\n    node.send([[msgArmed],[msgSafe]]);\n\n}\n",
-        "outputs": 2,
+        "func": "var msgArmed = {};\nvar msgSafe = {};\nvar msgEnd = {};\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR getting context data\";\n    return msg;\n}else{\n\n    msg.contextData = state;\n    \n    if(state.gameState.state === \"state_safe\"){\n        // disable off button\n        msgSafe.enabled = true;\n        msgArmed.enabled = false;\n        msgEnd.enabled = false;\n    }else if(state.gameState.state === \"state_armed\"){\n        // disable on button\n        msgSafe.enabled = false;\n        msgArmed.enabled = true;\n        msgEnd.enabled = false;\n    }else if(state.gameState.state === \"state_end\"){\n        // disable on button\n        msgSafe.enabled = false;\n        msgArmed.enabled = false;\n        msgEnd.enabled = true;\n    }\n    node.send([msgArmed,msgSafe,msgEnd]);\n}\n\n// var msgArmed = {};\n// var msgSafe = {};\n\n// var state = flow.get(\"mazeState\");\n// if (state === undefined) //test exists\n// {\n//     msg.contextData = \"ERROR getting context data\";\n//     return msg;\n// }else{\n\n//     msg.contextData = state;\n    \n//     if(state.gameState.state === \"state_safe\"){\n//         // disable off button\n//         msgSafe.enabled = false;\n//         msgArmed.enabled = true;\n//     }else if(state.gameState.state === \"state_armed\"){\n//         // disable on button\n//         msgSafe.enabled = true;\n//         msgArmed.enabled = false;\n//     }\n//     node.send([[msgArmed],[msgSafe]]);\n// }\n",
+        "outputs": 3,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
-        "y": 540,
+        "x": 400,
+        "y": 560,
         "wires": [
+            [
+                "06d0710a42d8500f"
+            ],
             [
                 "b86725c4e8a7aaf4"
             ],
             [
-                "06d0710a42d8500f"
+                "cd13b2d10897148f"
             ]
         ]
     },
@@ -3947,8 +3940,8 @@
             "44b4e817621dc4eb"
         ],
         "uncaught": false,
-        "x": 270,
-        "y": 540,
+        "x": 250,
+        "y": 560,
         "wires": [
             [
                 "4c7c9903e1bd03c4"
@@ -4018,10 +4011,12 @@
         "z": "1007930ba5f8f5d0",
         "name": "",
         "links": [
-            "569bb307f1dce85b"
+            "569bb307f1dce85b",
+            "15e43c7b7bfe7933",
+            "e15b1efed531b332"
         ],
         "x": 375,
-        "y": 600,
+        "y": 640,
         "wires": [
             [
                 "03d6addd92d8b97c"
@@ -4040,7 +4035,7 @@
         "finalize": "",
         "libs": [],
         "x": 530,
-        "y": 600,
+        "y": 640,
         "wires": [
             [
                 "44b4e817621dc4eb"
@@ -4057,7 +4052,7 @@
             "3a55666fddd57745"
         ],
         "x": 915,
-        "y": 580,
+        "y": 620,
         "wires": []
     },
     {
@@ -4072,7 +4067,7 @@
         "finalize": "",
         "libs": [],
         "x": 340,
-        "y": 780,
+        "y": 820,
         "wires": [
             [
                 "32c7222aaba9a015",
@@ -4087,10 +4082,12 @@
         "z": "1007930ba5f8f5d0",
         "name": "",
         "links": [
-            "569bb307f1dce85b"
+            "569bb307f1dce85b",
+            "15e43c7b7bfe7933",
+            "e15b1efed531b332"
         ],
         "x": 215,
-        "y": 780,
+        "y": 820,
         "wires": [
             [
                 "66497f39e9318a9c"
@@ -4132,7 +4129,7 @@
             "3a55666fddd57745"
         ],
         "x": 1055,
-        "y": 780,
+        "y": 820,
         "wires": []
     },
     {
@@ -4153,7 +4150,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 560,
-        "y": 820,
+        "y": 860,
         "wires": [
             [
                 "dac6cf3ea920dc28"
@@ -4172,7 +4169,7 @@
         "finalize": "",
         "libs": [],
         "x": 880,
-        "y": 820,
+        "y": 860,
         "wires": [
             [
                 "32c7222aaba9a015"
@@ -4197,29 +4194,12 @@
         "topic": "topic",
         "outputs": 1,
         "x": 700,
-        "y": 820,
+        "y": 860,
         "wires": [
             [
                 "7508327c4ac1d7b7"
             ]
         ]
-    },
-    {
-        "id": "5fac6d85b0de0270",
-        "type": "debug",
-        "z": "1007930ba5f8f5d0",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 810,
-        "y": 720,
-        "wires": []
     },
     {
         "id": "cce96c52818cbe39",
@@ -4233,11 +4213,365 @@
         "finalize": "",
         "libs": [],
         "x": 570,
-        "y": 740,
+        "y": 780,
         "wires": [
             [
-                "5fac6d85b0de0270",
                 "44b4e817621dc4eb"
+            ]
+        ]
+    },
+    {
+        "id": "cd13b2d10897148f",
+        "type": "ui_button",
+        "z": "1007930ba5f8f5d0",
+        "name": "END",
+        "group": "c489d944ca7cafd9",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "END",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "blue",
+        "className": "",
+        "icon": "",
+        "payload": "state_end",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 570,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "df364808ebe4c37d",
+        "type": "function",
+        "z": "1007930ba5f8f5d0",
+        "name": "1 - 14734117",
+        "func": "const id = 14734117;\nconst maxPort = 6;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n\nlet mqttTopic = msg.topic;\nlet topics = mqttTopic.split('/');\nlet device = topics[1];\n\nif(device.toString() === id.toString()){\n    let state = msg.payload;\n    msg.payload = state;\n    msg.id = device;\n    msg.state = state;\n    msg.port = topics[3];\n    node.send(msg);\n}\n\n\n\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 1060,
+        "wires": [
+            [
+                "2400ecd8102003a8"
+            ]
+        ]
+    },
+    {
+        "id": "d6384cea9290471e",
+        "type": "ui_led",
+        "z": "1007930ba5f8f5d0",
+        "order": 1,
+        "group": "1ed9afbc1b47bb32",
+        "width": 0,
+        "height": 0,
+        "label": "0",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 690,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "d3d907ba65693a1a",
+        "type": "ui_led",
+        "z": "1007930ba5f8f5d0",
+        "d": true,
+        "order": 5,
+        "group": "1ed9afbc1b47bb32",
+        "width": 0,
+        "height": 0,
+        "label": "4",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 690,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "d551ce62a3ee6b91",
+        "type": "ui_led",
+        "z": "1007930ba5f8f5d0",
+        "order": 2,
+        "group": "1ed9afbc1b47bb32",
+        "width": 0,
+        "height": 0,
+        "label": "1",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 690,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "8017b9315636c6f2",
+        "type": "ui_led",
+        "z": "1007930ba5f8f5d0",
+        "order": 3,
+        "group": "1ed9afbc1b47bb32",
+        "width": 0,
+        "height": 0,
+        "label": "2",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 690,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "31170c4720a0d4a7",
+        "type": "ui_led",
+        "z": "1007930ba5f8f5d0",
+        "d": true,
+        "order": 4,
+        "group": "1ed9afbc1b47bb32",
+        "width": 0,
+        "height": 0,
+        "label": "3",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 690,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "c9e9fb396fb6b1e4",
+        "type": "ui_led",
+        "z": "1007930ba5f8f5d0",
+        "d": true,
+        "order": 6,
+        "group": "1ed9afbc1b47bb32",
+        "width": 0,
+        "height": 0,
+        "label": "5",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 690,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "ae25ce48d3c68bfd",
+        "type": "ui_led",
+        "z": "1007930ba5f8f5d0",
+        "d": true,
+        "order": 7,
+        "group": "1ed9afbc1b47bb32",
+        "width": 0,
+        "height": 0,
+        "label": "6",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 690,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "2400ecd8102003a8",
+        "type": "switch",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "property": "port",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 7,
+        "x": 490,
+        "y": 1060,
+        "wires": [
+            [
+                "d6384cea9290471e"
+            ],
+            [
+                "d551ce62a3ee6b91"
+            ],
+            [
+                "8017b9315636c6f2"
+            ],
+            [
+                "31170c4720a0d4a7"
+            ],
+            [
+                "d3d907ba65693a1a"
+            ],
+            [
+                "c9e9fb396fb6b1e4"
+            ],
+            [
+                "ae25ce48d3c68bfd"
+            ]
+        ]
+    },
+    {
+        "id": "d7b1c21335cf4b2c",
+        "type": "link in",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "links": [
+            "569bb307f1dce85b"
+        ],
+        "x": 215,
+        "y": 1060,
+        "wires": [
+            [
+                "df364808ebe4c37d"
             ]
         ]
     },
