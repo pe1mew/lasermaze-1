@@ -27,7 +27,7 @@
         "id": "1007930ba5f8f5d0",
         "type": "tab",
         "label": "Game",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
