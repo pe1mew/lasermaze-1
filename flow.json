@@ -3,7 +3,7 @@
         "id": "b85e689907e9fec0",
         "type": "tab",
         "label": "TestBench",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
@@ -385,7 +385,7 @@
         "topic": "",
         "payloadType": "date",
         "x": 330,
-        "y": 120,
+        "y": 220,
         "wires": [
             [
                 "2418317a0fde6e8d"
@@ -404,7 +404,7 @@
         "finalize": "",
         "libs": [],
         "x": 490,
-        "y": 120,
+        "y": 220,
         "wires": [
             [
                 "ac0f859af2c36f08"
@@ -423,7 +423,7 @@
         "finalize": "",
         "libs": [],
         "x": 490,
-        "y": 160,
+        "y": 260,
         "wires": [
             [
                 "ac0f859af2c36f08"
@@ -445,7 +445,7 @@
         "expiry": "",
         "broker": "250ff9a.803fb06",
         "x": 710,
-        "y": 120,
+        "y": 180,
         "wires": []
     },
     {
@@ -469,7 +469,7 @@
         "topic": "",
         "payloadType": "date",
         "x": 330,
-        "y": 160,
+        "y": 260,
         "wires": [
             [
                 "bb74cd760b6d518c"
@@ -483,7 +483,7 @@
         "name": "4-relay - 1",
         "info": "",
         "x": 160,
-        "y": 160,
+        "y": 260,
         "wires": []
     },
     {
@@ -493,7 +493,7 @@
         "name": "4-relay - 2",
         "info": "",
         "x": 160,
-        "y": 120,
+        "y": 220,
         "wires": []
     },
     {
@@ -517,7 +517,7 @@
         "topic": "",
         "payloadType": "date",
         "x": 330,
-        "y": 80,
+        "y": 100,
         "wires": [
             [
                 "8200541acdb9f1e1"
@@ -536,7 +536,7 @@
         "finalize": "",
         "libs": [],
         "x": 490,
-        "y": 80,
+        "y": 100,
         "wires": [
             [
                 "ac0f859af2c36f08"
@@ -550,7 +550,121 @@
         "name": "8-output - 3",
         "info": "",
         "x": 150,
-        "y": 80,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8f7ce74de75828de",
+        "type": "inject",
+        "z": "b85e689907e9fec0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 140,
+        "wires": [
+            [
+                "27249527beeab8d5"
+            ]
+        ]
+    },
+    {
+        "id": "27249527beeab8d5",
+        "type": "function",
+        "z": "b85e689907e9fec0",
+        "name": "14531726",
+        "func": "const id = 14531726;\nconst maxPort = 8;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 140,
+        "wires": [
+            [
+                "ac0f859af2c36f08"
+            ]
+        ]
+    },
+    {
+        "id": "831bc53c744e50cb",
+        "type": "comment",
+        "z": "b85e689907e9fec0",
+        "name": "8-output - 3",
+        "info": "",
+        "x": 150,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "22a88a55597f5443",
+        "type": "inject",
+        "z": "b85e689907e9fec0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "5fcb7a2bca14ed81"
+            ]
+        ]
+    },
+    {
+        "id": "5fcb7a2bca14ed81",
+        "type": "function",
+        "z": "b85e689907e9fec0",
+        "name": "14733592",
+        "func": "const id = 14733592;\nconst maxPort = 8;\nconst ON = \"1\";\nconst OFF = \"0\";\n\n// memeory template for context\nvar _memoryTemplate = {\n\t\"i\" : 0,\n\t\"state\" : 0x00\n}\n\n// Get context data and set deafult when not existing\nvar memory = flow.get(id.toString());\nif (memory === undefined) //test exists\n{\n  memory = _memoryTemplate;\n}\n\n// MQTT settings\nlet topicBase = \"lasermaze/\" + id.toString() + \"/output/\";\nmsg.qos = 0;\nmsg.retain = false;\n\n// Increment iterator.\nif(memory.i < maxPort){\n    memory.i++;\n}else{\n    memory.i = 0;\n}\n\n// set all outputs at device.\nfor( i = 0; i < maxPort; i++){\n    if(i === memory.i){\n        msg.payload = ON; \n    }else{\n        msg.payload = OFF;\n    }\n    msg.topic = topicBase + i.toString() + \"/\";\n    node.send(msg);\n}\n\n\n// Save context data\nflow.set(id.toString(), memory);\n\n// return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "ac0f859af2c36f08"
+            ]
+        ]
+    },
+    {
+        "id": "7c529d60a4aef5d1",
+        "type": "comment",
+        "z": "b85e689907e9fec0",
+        "name": "8-output - 3",
+        "info": "",
+        "x": 150,
+        "y": 180,
         "wires": []
     },
     {
@@ -2142,7 +2256,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "30",
+        "repeat": "33",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -2150,7 +2264,7 @@
         "payload": "0",
         "payloadType": "num",
         "x": 600,
-        "y": 260,
+        "y": 180,
         "wires": [
             [
                 "8b733a605e170392"
@@ -2179,7 +2293,7 @@
         "payload": "0",
         "payloadType": "num",
         "x": 600,
-        "y": 220,
+        "y": 140,
         "wires": [
             [
                 "8b733a605e170392"
@@ -2208,7 +2322,7 @@
         "payload": "0",
         "payloadType": "num",
         "x": 600,
-        "y": 180,
+        "y": 100,
         "wires": [
             [
                 "8b733a605e170392"
@@ -2229,8 +2343,8 @@
         "correl": "",
         "expiry": "",
         "broker": "250ff9a.803fb06",
-        "x": 870,
-        "y": 220,
+        "x": 850,
+        "y": 180,
         "wires": []
     },
     {
@@ -2266,6 +2380,64 @@
         ]
     },
     {
+        "id": "5e448124043ae913",
+        "type": "inject",
+        "z": "3e84c5cf3d615558",
+        "name": "9@14531726",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "34",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14531726/output/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 600,
+        "y": 220,
+        "wires": [
+            [
+                "8b733a605e170392"
+            ]
+        ]
+    },
+    {
+        "id": "43ae77facdf8a9f2",
+        "type": "inject",
+        "z": "3e84c5cf3d615558",
+        "name": "9@14733592",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "34",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14733592/output/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 600,
+        "y": 260,
+        "wires": [
+            [
+                "8b733a605e170392"
+            ]
+        ]
+    },
+    {
         "id": "116956766c49aa47",
         "type": "mqtt in",
         "z": "14b665ce20ae005d",
@@ -2294,7 +2466,7 @@
         "type": "debug",
         "z": "14b665ce20ae005d",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3013,7 +3185,7 @@
         "type": "debug",
         "z": "14b665ce20ae005d",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3457,6 +3629,33 @@
         "x": 225,
         "y": 440,
         "wires": []
+    },
+    {
+        "id": "3a60b606f1b74937",
+        "type": "inject",
+        "z": "14b665ce20ae005d",
+        "name": "9@x - 14771609",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "35",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14771609/input/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 260,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "444a4311f2a074bd",
