@@ -27,7 +27,7 @@
         "id": "1007930ba5f8f5d0",
         "type": "tab",
         "label": "Game",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -285,6 +285,7 @@
     {
         "id": "8f574078854e0b61",
         "type": "ui_group",
+        "d": true,
         "name": "14530877",
         "tab": "c51fcf6d617cd347",
         "order": 3,
@@ -4127,7 +4128,7 @@
         "group": "aa53a1fae4f5c3fc",
         "width": 0,
         "height": 0,
-        "label": "2",
+        "label": "2 start/stop",
         "labelPlacement": "left",
         "labelAlignment": "left",
         "colorForValue": [
@@ -4145,8 +4146,8 @@
         "allowColorForValueInMessage": false,
         "shape": "circle",
         "showGlow": true,
-        "name": "",
-        "x": 650,
+        "name": "start/stop",
+        "x": 660,
         "y": 480,
         "wires": []
     },
@@ -4467,7 +4468,7 @@
         "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
-        "label": "3",
+        "label": "3 Stop",
         "labelPlacement": "left",
         "labelAlignment": "left",
         "colorForValue": [
@@ -4485,7 +4486,7 @@
         "allowColorForValueInMessage": false,
         "shape": "circle",
         "showGlow": true,
-        "name": "",
+        "name": "Stop",
         "x": 650,
         "y": 1040,
         "wires": []
@@ -5163,7 +5164,7 @@
         "id": "3a60b606f1b74937",
         "type": "inject",
         "z": "14b665ce20ae005d",
-        "name": "9@x - 14771609",
+        "name": "9@x - 14770992",
         "props": [
             {
                 "p": "payload"
@@ -5177,13 +5178,15 @@
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
-        "topic": "lasermaze/14771609/input/9/",
+        "topic": "lasermaze/14770992/input/9/",
         "payload": "0",
         "payloadType": "num",
         "x": 150,
         "y": 260,
         "wires": [
-            []
+            [
+                "fcca2048077acd7a"
+            ]
         ]
     },
     {
