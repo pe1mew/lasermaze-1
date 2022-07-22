@@ -221,11 +221,11 @@
     {
         "id": "aa53a1fae4f5c3fc",
         "type": "ui_group",
-        "name": "[4] 14734117",
+        "name": "14734117",
         "tab": "c5e7312eaa9cdf8b",
         "order": 1,
         "disp": true,
-        "width": 3,
+        "width": "3",
         "collapse": false,
         "className": ""
     },
@@ -4053,6 +4053,7 @@
         "id": "5e95ece44f94442c",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
+        "d": true,
         "order": 5,
         "group": "aa53a1fae4f5c3fc",
         "width": 0,
@@ -4146,6 +4147,7 @@
         "id": "4559354309676911",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
+        "d": true,
         "order": 4,
         "group": "aa53a1fae4f5c3fc",
         "width": 0,
@@ -4177,6 +4179,7 @@
         "id": "d45845b809e2390b",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
+        "d": true,
         "order": 6,
         "group": "aa53a1fae4f5c3fc",
         "width": 0,
@@ -4208,6 +4211,7 @@
         "id": "b7ca4db26c786682",
         "type": "ui_led",
         "z": "14b665ce20ae005d",
+        "d": true,
         "order": 7,
         "group": "aa53a1fae4f5c3fc",
         "width": 0,
@@ -4459,7 +4463,7 @@
         "group": "d4b46c88d0dadebe",
         "width": 0,
         "height": 0,
-        "label": "3 Stop",
+        "label": "3 End",
         "labelPlacement": "left",
         "labelAlignment": "left",
         "colorForValue": [
@@ -4477,7 +4481,7 @@
         "allowColorForValueInMessage": false,
         "shape": "circle",
         "showGlow": true,
-        "name": "Stop",
+        "name": "End",
         "x": 650,
         "y": 1040,
         "wires": []
@@ -5178,6 +5182,33 @@
             [
                 "fcca2048077acd7a"
             ]
+        ]
+    },
+    {
+        "id": "0606ca36eb6c0a72",
+        "type": "inject",
+        "z": "14b665ce20ae005d",
+        "name": "9@x - 14493860",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "36",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "lasermaze/14493860/input/9/",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            []
         ]
     },
     {
