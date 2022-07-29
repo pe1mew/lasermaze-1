@@ -180,10 +180,10 @@
             }
         },
         "site": {
-            "name": "Lasermaze TEST Dashboard",
+            "name": "Lasermaze Dashboard",
             "hideToolbar": "false",
             "allowSwipe": "false",
-            "lockMenu": "icon",
+            "lockMenu": "true",
             "allowTempTheme": "true",
             "dateFormat": "DD/MM/YYYY",
             "sizes": {
@@ -232,11 +232,11 @@
     {
         "id": "d669fe7b63ed71a3",
         "type": "ui_group",
-        "name": "[3] 14733772",
+        "name": "14733772",
         "tab": "c5e7312eaa9cdf8b",
         "order": 2,
         "disp": true,
-        "width": 3,
+        "width": "3",
         "collapse": false,
         "className": ""
     },
@@ -297,11 +297,11 @@
     {
         "id": "d4b46c88d0dadebe",
         "type": "ui_group",
-        "name": "[x] 14771609",
+        "name": "14771609",
         "tab": "c5e7312eaa9cdf8b",
         "order": 3,
         "disp": true,
-        "width": 3,
+        "width": "3",
         "collapse": false,
         "className": ""
     },
@@ -382,11 +382,11 @@
     {
         "id": "0d8a39210b7bddfd",
         "type": "ui_group",
-        "name": "Smoke",
+        "name": "Smoke (3 minutes)",
         "tab": "4fa174b828a925c7",
         "order": 2,
         "disp": true,
-        "width": 4,
+        "width": "4",
         "collapse": false,
         "className": ""
     },
@@ -5255,7 +5255,7 @@
         "type": "function",
         "z": "1007930ba5f8f5d0",
         "name": "Configure flow context data",
-        "func": "const _stateTemplate = {\n    \"gate\": [\n        { // gate 1\n            \"TXNode\": 14531726,\n            \"TXPort\": 3,\n            \"stateTX\": \"1\",\n            \"RXNode\": 14734117,\n            \"RXPort\": 0,\n            \"stateRX\": \"0\"\n        },\n        { // gate 2\n            \"TXNode\": 14531726,\n            \"TXPort\": 4,\n            \"stateTX\": \"1\",\n            \"RXNode\": 14771609,\n            \"RXPort\": 2,\n            \"stateRX\": \"0\"\n        },\n        { // gate 3\n            \"TXNode\": 14531726,\n            \"TXPort\": 2,\n            \"stateTX\": \"1\",\n            \"RXNode\": 14734117,\n            \"RXPort\": 1,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14531726,\n            \"TXPort\": 4,\n            \"stateTX\": 0,\n            \"RXNode\": 14734117,\n            \"RXPort\": 2,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14531726,\n            \"TXPort\": 1,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 1,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14531726,\n            \"TXPort\": 0,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 0,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14531726,\n            \"TXPort\": 5,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 4,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14531726,\n            \"TXPort\": 6,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 5,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14531726,\n            \"TXPort\": 7,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 6,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14733592,\n            \"TXPort\": 0,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 0,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14733592,\n            \"TXPort\": 1,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 1,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14733592,\n            \"TXPort\": 2,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 2,\n            \"stateRX\": \"0\"\n        }/*,\n        {\n            \"TXNode\": 14733592,\n            \"TXPort\": 3,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 3,\n            \"stateRX\": \"0\"\n        }*/,\n        {\n            \"TXNode\": 14733592,\n            \"TXPort\": 4,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 4,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"TXNode\": 14733592,\n            \"TXPort\": 5,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 5,\n            \"stateRX\": \"0\"\n        }/*,\n        {\n            \"TXNode\": 14733592,\n            \"TXPort\": 6,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 6,\n            \"stateRX\": \"0\"\n        }*/\n    ],\n    \"gameState\": {\n        \"RXNode\": 14734117,\n        \"RXPort\": 2,\n        \"stateRX\": \"0\",\n        \"TXNode\": 14493860,\n        \"TXPort\": 2,\n        \"stateTX\": 0,\n        \"state\": \"state_idle\"\n    },\n    \"alarm\": {\n        \"TXNode\": 14493860,\n        \"TXPort\": 3,\n        \"stateTX\": 0,\n    },\n    \"smoke\": {\n        \"TXNode\": 14493860,\n        \"TXPort\": 1,\n        \"stateTX\": 0,\n    },\n    \"endButton\": {\n        \"RXNode\": 14771609,\n        \"RXPort\": 3,\n        \"stateRX\": \"0\",\n        \"TXNode\": 14769654,\n        \"TXPort\": 0,\n        \"stateTX\": 0,\n        \"gameState\": \"state_idle\"\n    }\n}\n\nflow.set(\"mazeState\", _stateTemplate);\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.payload = false;\n    msg.contextData = \"ERROR setting context data\";\n}else{\n    msg.payload = true;\n    msg.contextData = state;\n}\n\nreturn msg;",
+        "func": "const _stateTemplate = {\n    \"gate\": [\n        { // gate 1\n            \"Label\": \"1\",\n            \"TXNode\": 14531726,\n            \"TXPort\": 3,\n            \"stateTX\": \"1\",\n            \"RXNode\": 14734117,\n            \"RXPort\": 0,\n            \"stateRX\": \"0\"\n        },\n        { // gate 2\n            \"Label\": \"2\",\n            \"TXNode\": 14531726,\n            \"TXPort\": 4,\n            \"stateTX\": \"1\",\n            \"RXNode\": 14771609,\n            \"RXPort\": 2,\n            \"stateRX\": \"0\"\n        },\n        { // gate 3\n            \"Label\": \"3\",\n            \"TXNode\": 14531726,\n            \"TXPort\": 2,\n            \"stateTX\": \"1\",\n            \"RXNode\": 14734117,\n            \"RXPort\": 1,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"4\",\n            \"TXNode\": 14531726,\n            \"TXPort\": 4,\n            \"stateTX\": 0,\n            \"RXNode\": 14734117,\n            \"RXPort\": 2,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"5\",\n            \"TXNode\": 14531726,\n            \"TXPort\": 1,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 1,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"6\",\n            \"TXNode\": 14531726,\n            \"TXPort\": 0,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 0,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"7\",\n            \"TXNode\": 14531726,\n            \"TXPort\": 5,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 4,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"8\",\n            \"TXNode\": 14531726,\n            \"TXPort\": 6,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 5,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"9\",\n            \"TXNode\": 14531726,\n            \"TXPort\": 7,\n            \"stateTX\": 0,\n            \"RXNode\": 14771609,\n            \"RXPort\": 6,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"10\",\n            \"TXNode\": 14733592,\n            \"TXPort\": 0,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 0,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"11\",\n            \"TXNode\": 14733592,\n            \"TXPort\": 1,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 1,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"12\",\n            \"TXNode\": 14733592,\n            \"TXPort\": 2,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 2,\n            \"stateRX\": \"0\"\n        }/*,\n        {\n            \"Label\": \"13\",\n            \"TXNode\": 14733592,\n            \"TXPort\": 3,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 3,\n            \"stateRX\": \"0\"\n        }*/,\n        {\n            \"Label\": \"14\",\n            \"TXNode\": 14733592,\n            \"TXPort\": 4,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 4,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"15\",\n            \"TXNode\": 14733592,\n            \"TXPort\": 5,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 5,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"16\",\n            \"TXNode\": 14733592,\n            \"TXPort\": 6,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 6,\n            \"stateRX\": \"0\"\n        },\n        {\n            \"Label\": \"17\",\n            \"TXNode\": 14733592,\n            \"TXPort\": 7,\n            \"stateTX\": 0,\n            \"RXNode\": 14733772,\n            \"RXPort\": 3,\n            \"stateRX\": \"0\"\n        }\n    ],\n    \"gameState\": {\n        \"RXNode\": 14734117,\n        \"RXPort\": 2,\n        \"stateRX\": \"0\",\n        \"TXNode\": 14493860,\n        \"TXPort\": 2,\n        \"stateTX\": 0,\n        \"state\": \"state_idle\"\n    },\n    \"alarm\": {\n        \"TXNode\": 14493860,\n        \"TXPort\": 3,\n        \"stateTX\": 0,\n    },\n    \"smoke\": {\n        \"TXNode\": 14493860,\n        \"TXPort\": 1,\n        \"stateTX\": \"1\",\n    },\n    \"endButton\": {\n        \"RXNode\": 14771609,\n        \"RXPort\": 3,\n        \"stateRX\": \"0\",\n        \"TXNode\": 14769654,\n        \"TXPort\": 0,\n        \"stateTX\": 0,\n        \"gameState\": \"state_idle\"\n    }\n}\n\nflow.set(\"mazeState\", _stateTemplate);\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.payload = false;\n    msg.contextData = \"ERROR setting context data\";\n}else{\n    msg.payload = true;\n    msg.contextData = state;\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6695,13 +6695,13 @@
         "id": "baf60c65be22fb15",
         "type": "ui_button",
         "z": "1007930ba5f8f5d0",
-        "name": "Smoke ON",
+        "name": "Smoke Start",
         "group": "0d8a39210b7bddfd",
         "order": 1,
         "width": 2,
         "height": 2,
         "passthru": false,
-        "label": "Smoke ON",
+        "label": "Start",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
@@ -6715,7 +6715,8 @@
         "y": 420,
         "wires": [
             [
-                "3ad131a1335a2282"
+                "3ad131a1335a2282",
+                "94bc4f46963a031e"
             ]
         ]
     },
@@ -6726,7 +6727,7 @@
         "name": "",
         "op1": "",
         "op2": "0",
-        "op1type": "pay",
+        "op1type": "nul",
         "op2type": "str",
         "duration": "3",
         "extend": false,
@@ -6736,11 +6737,12 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 670,
-        "y": 420,
+        "x": 690,
+        "y": 380,
         "wires": [
             [
-                "94bc4f46963a031e"
+                "94bc4f46963a031e",
+                "fab2c4a06ed42c69"
             ]
         ]
     },
@@ -6749,7 +6751,7 @@
         "type": "function",
         "z": "1007930ba5f8f5d0",
         "name": "Set smoke ON",
-        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nlet input = msg.payload;\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR setting context data\";\n    return msg;\n}else{\n    \n    // MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    \n    msg.topic = \"lasermaze/\" + state.smoke.TXNode + \"/output/\" + state.smoke.TXPort + \"/\";\n    node.send(msg);\n\n}\n\n    \n",
+        "func": "const ON = \"1\";\nconst OFF = \"0\";\n\nlet input = msg.payload;\n\nvar state = flow.get(\"mazeState\");\nif (state === undefined) //test exists\n{\n    msg.contextData = \"ERROR setting context data\";\n    return msg;\n}else{\n    \n    // MQTT settings\n    msg.qos = 0;\n    msg.retain = false;\n    \n    if((state.smoke.stateTX === \"1\") || (inpout === OFF)){\n        msg.topic = \"lasermaze/\" + state.smoke.TXNode + \"/output/\" + state.smoke.TXPort + \"/\";\n        node.send(msg);\n    }\n    \n}\n\n    \n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -6785,13 +6787,13 @@
         "id": "82e3f824276ff3dc",
         "type": "ui_button",
         "z": "1007930ba5f8f5d0",
-        "name": "Smoke OFF",
+        "name": "Smoke Stop",
         "group": "0d8a39210b7bddfd",
         "order": 2,
         "width": 2,
         "height": 2,
         "passthru": false,
-        "label": "Smoke OFF",
+        "label": "Stop",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
@@ -6849,6 +6851,23 @@
                 "266022506cc4f09d"
             ]
         ]
+    },
+    {
+        "id": "fab2c4a06ed42c69",
+        "type": "debug",
+        "z": "1007930ba5f8f5d0",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 400,
+        "wires": []
     },
     {
         "id": "3620555d11c280fd",
